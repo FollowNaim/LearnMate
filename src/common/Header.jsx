@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Header() {
   return (
@@ -9,19 +9,19 @@ function Header() {
           <h1 className="text-2xl font-bold">TutorHub </h1>
         </div>
         <div>
-          <ul className="flex items-center gap-4">
-            <Link to={"/"}>
+          <ul id="navlinks" className="flex items-center gap-4">
+            <NavLink to={"/"}>
               <li>Home</li>
-            </Link>
-            <Link to={"/find-tutors"}>
+            </NavLink>
+            <NavLink to={"/find-tutors"}>
               <li>Find tutors</li>
-            </Link>
+            </NavLink>
             <li>Add Tutorials</li>
             <li>My Tutorials</li>
             <li>My booked tutors</li>
           </ul>
         </div>
-        <div>
+        <div className="flex items-center gap-2">
           <Button variant="ghost">Login</Button>
           <Button className="">Register</Button>
         </div>

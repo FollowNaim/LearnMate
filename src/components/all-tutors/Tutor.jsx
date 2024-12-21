@@ -61,9 +61,13 @@ function Tutor() {
     //   </div>
     // </div>
     <Card className="flex items-center">
-      <CardHeader>
-        <div>
-          <img className="w-32 object-cover" src={tutor} alt="" />
+      <CardHeader className="h-full">
+        <div className="w-full h-full">
+          <img
+            className="w-32 h-full object-cover rounded-md"
+            src={tutor}
+            alt=""
+          />
         </div>
       </CardHeader>
       <CardContent className="p-6 pl-2">
@@ -71,11 +75,11 @@ function Tutor() {
           <div>
             <h2 className="text-xl font-semibold text-black">Phillip N.</h2>{" "}
             <div className="mt-2">
-              <p className="bg-accent/20 px-1 rounded-md w-fit text-black/70">
+              <p className="bg-destructive/20 px-1 rounded-md w-fit text-black/70">
                 Super Tutor
               </p>
 
-              <div className=" mt-2 flex flex-col gap-2">
+              <div className=" mt-4 flex flex-col gap-2">
                 <p className="flex items-center gap-3">
                   <GiGraduateCap color="#000" size={18} /> <span>English</span>
                 </p>
@@ -86,11 +90,8 @@ function Tutor() {
 
                 <p className="flex items-center gap-3">
                   <MdOutlineTranslate color="#000" size={18} />
-                  <span>
-                    {"Speaks English (Native), German (Native)".substring(
-                      0,
-                      20
-                    )}
+                  <span className="">
+                    Speaks English (Native), German (Native)
                   </span>
                 </p>
               </div>
@@ -100,24 +101,24 @@ function Tutor() {
       </CardContent>
       <CardContent className="flex flex-col p-6 ml-auto">
         <div className="flex items-start">
-          <p className="flex flex-col gap-3">
+          <p className="flex flex-col gap-1">
             <p className="flex items-center gap-2">
               <FaStar /> <span className="font-medium">4.9</span>
             </p>
             <p>
-              30 <span className="text-muted-foreground">Review</span>
+              6 <span className="text-muted-foreground">Review</span>
             </p>
           </p>
-
           <p className="">
             <p className="flex items-center gap-2">
               <AiTwotoneDollarCircle /> <span className="font-medium">30</span>
             </p>
           </p>
         </div>
-        <div className=" mt-10">
-          <Button className="mt-auto" size="lg">
-            Book Lesson
+        <div className="mt-6 grow flex flex-col gap-3">
+          <Button className="">Book Lesson</Button>
+          <Button variant="outline" className="">
+            See Details
           </Button>
         </div>
       </CardContent>

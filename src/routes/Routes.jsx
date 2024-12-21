@@ -1,5 +1,6 @@
 import RootLayout from "@/layout/RootLayout";
 import AllTutors from "@/pages/AllTutors";
+import DetailsTutors from "@/pages/DetailsTutors";
 import Home from "@/pages/Home";
 import { createBrowserRouter } from "react-router-dom";
 
@@ -15,6 +16,10 @@ export const routes = createBrowserRouter([
       {
         path: "/find-tutors",
         element: <AllTutors />,
+      },
+      {
+        path: "/tutors/:details",
+        element: <DetailsTutors />,
       },
       {
         path: "/find-tutors/:category",

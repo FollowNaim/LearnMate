@@ -7,6 +7,7 @@ module.exports = {
     extend: {
       fontFamily: {
         lato: ["Lato", "serif"],
+        figtree: ["Figtree", "serif"],
       },
       borderRadius: {
         lg: "var(--radius)",
