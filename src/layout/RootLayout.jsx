@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 
 function RootLayout() {
   return (
-    <div>
+    <div className="font-lato">
       <Header />
       <div className="min-h-[calc(100vh_-_100px)]">
         <Outlet />

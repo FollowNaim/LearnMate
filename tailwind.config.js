@@ -5,6 +5,9 @@ module.exports = {
   theme: {
     container: { center: true },
     extend: {
+      fontFamily: {
+        lato: ["Lato", "serif"],
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",

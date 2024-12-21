@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
@@ -9,8 +10,12 @@ function Header() {
         </div>
         <div>
           <ul className="flex items-center gap-4">
-            <li>Home</li>
-            <li>Find tutors</li>
+            <Link to={"/"}>
+              <li>Home</li>
+            </Link>
+            <Link to={"/find-tutors"}>
+              <li>Find tutors</li>
+            </Link>
             <li>Add Tutorials</li>
             <li>My Tutorials</li>
             <li>My booked tutors</li>
@@ -18,7 +23,7 @@ function Header() {
         </div>
         <div>
           <Button variant="ghost">Login</Button>
-          <Button>Register</Button>
+          <Button className="">Register</Button>
         </div>
       </div>
     </div>
