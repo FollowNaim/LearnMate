@@ -3,13 +3,13 @@ import { IoIosArrowForward } from "react-icons/io";
 function CategoryCard() {
   return (
     <div>
-      <div className="flex justify-between items-center gap-4 border rounded-md px-5 py-3 hover:bg-muted cursor-pointer">
+      <div className="flex justify-between items-center gap-4 border rounded-md px-5 py-3 hover:bg-destructive/10 cursor-pointer">
         <div className="flex flex-col gap-1">
           <p className="flex items-center gap-2">
             <GiLightningSpanner size={22} />{" "}
-            <span className="text-xl font-semibold">English Tutor</span>
+            <span className="text-lg font-semibold">English Tutor</span>
           </p>
-          <p className="text-secondary-foreground/80">120+ Teachers</p>
+          <p className="text-secondary-foreground/80 text-sm">120+ Teachers</p>
         </div>
         <p>
           <IoIosArrowForward size={22} />
