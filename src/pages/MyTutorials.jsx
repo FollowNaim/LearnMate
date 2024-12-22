@@ -1,6 +1,14 @@
 import Spinner from "@/components/loader/Spinner";
 import { Button } from "@/components/ui/button";
 import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import {
   Table,
   TableBody,
   TableCaption,
@@ -10,29 +18,18 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useAuth } from "@/hooks/useAuth";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import axios from "axios";
-import toast from "react-hot-toast";
 
-function MyBooksList() {
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import { MoreHorizontal } from "lucide-react";
+import { Link } from "react-router-dom";
+
+function MyTutorials() {
   const { user } = useAuth();
-  const queryClient = useQueryClient();
   const { data, isLoading } = useQuery({
     queryKey: ["my-bookings"],
-    queryFn: () => axios.get(`/bookings?email=${user?.email}`),
+    queryFn: () => axios.get(`/my-tutorials/${user?.email}`),
   });
-  const mutation = useMutation({
-    mutationFn: (id) => axios.patch(`/update-review/${id}`),
-    onSuccess: () =>
-      queryClient.invalidateQueries({ queryKey: ["my-bookings"] }),
-  });
-  const handleReview = (id) => {
-    toast.promise(mutation.mutateAsync(id), {
-      loading: "Review Adding...",
-      success: <b>Review added successfull !</b>,
-      error: <b>Could not added.</b>,
-    });
-  };
   if (isLoading) return <Spinner />;
   return (
     <div className="mb-10 mt-2">
@@ -45,6 +42,7 @@ function MyBooksList() {
               <TableHead>Image</TableHead>
               <TableHead>Name</TableHead>
               <TableHead className="">Language</TableHead>
+              <TableHead className="">Description</TableHead>
               <TableHead className="">Review</TableHead>
               <TableHead className="">Price</TableHead>
               <TableHead className="text-right">Actions</TableHead>
@@ -52,7 +50,10 @@ function MyBooksList() {
           </TableHeader>
           <TableBody>
             {data?.data.map(
-              ({ _id, tutorId, name, image, category, price, review }, i) => (
+              (
+                { _id, name, image, description, category, price, review },
+                i
+              ) => (
                 <TableRow key={_id}>
                   <TableCell className="font-medium">{i + 1}</TableCell>
                   <TableCell>
@@ -64,14 +65,31 @@ function MyBooksList() {
                   </TableCell>
                   <TableCell>{name}</TableCell>
                   <TableCell>
-                    {category.charAt(0).toUpperCase() + category.slice(1)}
+                    {category?.charAt(0).toUpperCase() + category?.slice(1)}
                   </TableCell>
+                  <TableCell>{description?.substring(0, 27)}...</TableCell>
                   <TableCell>{review}</TableCell>
                   <TableCell>${price}</TableCell>
                   <TableCell className="text-right">
-                    <Button onClick={() => handleReview(tutorId)}>
-                      Review
-                    </Button>
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button variant="ghost" className="h-8 w-8 p-0">
+                          <span className="sr-only">Open menu</span>
+                          <MoreHorizontal className="h-4 w-4" />
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="end">
+                        <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                        <DropdownMenuSeparator />
+                        <Link to={`/tutor/${_id}`}>
+                          <DropdownMenuItem>View Tutorial</DropdownMenuItem>
+                        </Link>
+                        <Link to={`/tutor/update/${_id}`}>
+                          <DropdownMenuItem>Update Tutorial</DropdownMenuItem>
+                        </Link>
+                        <DropdownMenuItem>Delete Tutorial</DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
                   </TableCell>
                 </TableRow>
               )
@@ -83,4 +101,4 @@ function MyBooksList() {
   );
 }
 
-export default MyBooksList;
+export default MyTutorials;

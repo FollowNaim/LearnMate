@@ -1,15 +1,16 @@
 import Tutor from "@/components/all-tutors/Tutor";
+import Spinner from "@/components/loader/Spinner";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
 function AllTutors() {
   const { category } = useParams();
-  const { data } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["tutors"],
     queryFn: () => axios.get(`/tutors?category=${category || ""}`),
   });
-  console.log(data?.data);
+  if (isLoading) return <Spinner />;
   return (
     <div className="my-10">
       <div className="container px-4">

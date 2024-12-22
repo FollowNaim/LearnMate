@@ -20,26 +20,40 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { useAuth } from "@/hooks/useAuth";
+import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Lottie from "lottie-react";
+import toast from "react-hot-toast";
+import { useNavigate, useParams } from "react-router-dom";
 
-export default function AddTutorials() {
+export default function UpdateTutorial() {
   const { user } = useAuth();
-  const handleSubmit = (e) => {
+  const { id } = useParams();
+  const { data } = useQuery({
+    queryKey: ["tutors"],
+    queryFn: () => axios.get(`/tutors/${id}`),
+  });
+  const navigate = useNavigate();
+  const { _id, name, image, description, category, price, review } = data?.data;
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.target));
     data.name = user?.displayName;
     data.email = user?.email;
     data.review = 0;
-    const res = axios.post("/tutors", data);
-    console.log(res);
+    toast.promise(axios.put(`/tutors/${_id}`, data), {
+      loading: "Updating...",
+      success: <b>Updated successfull !</b>,
+      error: <b>Could not update.</b>,
+    });
+    navigate("/my-tutorials");
   };
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 max-w-7xl mx-auto items-center justify-center mt-10 mb-14 px-4 md:px-6">
       <form className="w-full max-w-md mx-auto" onSubmit={handleSubmit}>
         <Card className="w-full max-w-lg mx-auto">
           <CardHeader className="space-y-1 text-center">
-            <CardTitle className="text-2xl">Add Tutorial</CardTitle>
+            <CardTitle className="text-2xl">Update Tutorial</CardTitle>
             <CardDescription>
               Expand your collection with the latest gear additions.
             </CardDescription>
@@ -59,6 +73,7 @@ export default function AddTutorials() {
               <div className="grid gap-2 w-full">
                 <Label htmlFor="image">Image</Label>
                 <Input
+                  defaultValue={image}
                   name="image"
                   id="image"
                   type="url"
@@ -69,6 +84,7 @@ export default function AddTutorials() {
                 <div className="grid gap-2 w-full">
                   <Label htmlFor="price">Price (in dollar)</Label>
                   <Input
+                    defaultValue={price}
                     required
                     name="price"
                     step="0.01"
@@ -82,7 +98,12 @@ export default function AddTutorials() {
             <div className="flex items-center gap-3">
               <div className="grid gap-2 w-full">
                 <Label htmlFor="role">Language</Label>
-                <Select id="category" name="category" defaultValue="english">
+                <Select
+                  defaultValue={category}
+                  id="category"
+                  name="category"
+                  defaultValue="english"
+                >
                   <SelectTrigger>
                     <SelectValue placeholder="Select a role" />
                   </SelectTrigger>
@@ -104,6 +125,7 @@ export default function AddTutorials() {
               <div className="grid gap-2 w-full">
                 <Label htmlFor="description">Description</Label>
                 <Textarea
+                  defaultValue={description}
                   required
                   name="description"
                   id="description"
@@ -115,7 +137,7 @@ export default function AddTutorials() {
             </div>
           </CardContent>
           <CardFooter>
-            <Button className="w-full">Add Tutorial</Button>
+            <Button className="w-full">Update Tutorial</Button>
           </CardFooter>
         </Card>
       </form>

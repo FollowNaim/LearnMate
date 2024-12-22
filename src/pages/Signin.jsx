@@ -10,13 +10,23 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useAuth } from "@/hooks/useAuth";
+import toast from "react-hot-toast";
 import { FaGithub, FaGoogle } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export default function SignIn() {
   const { handleGoogleLogin } = useAuth();
-  const handleGoogle = async () => {
-    const { user } = await handleGoogleLogin();
+  const { state } = useLocation();
+
+  const navigate = useNavigate();
+  const handleGoogle = () => {
+    toast
+      .promise(handleGoogleLogin(), {
+        loading: "Signin...",
+        success: <b>Signed in successfull !</b>,
+        error: <b>Could not signin.</b>,
+      })
+      .then(navigate(state || "/"));
   };
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 justify-center max-w-7xl mx-auto pr-4 items-center">

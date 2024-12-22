@@ -1,11 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
+import toast from "react-hot-toast";
 import { Link, NavLink } from "react-router-dom";
 
 function Header() {
   const { user, handleSignOut } = useAuth();
-  const handleLogout = async () => {
-    await handleSignOut();
+  const handleLogout = () => {
+    toast.promise(handleSignOut(), {
+      loading: "Logging out...",
+      success: <b>Logout Successfull!</b>,
+      error: <b>Could not save.</b>,
+    });
   };
   return (
     <div>
@@ -24,8 +29,12 @@ function Header() {
             <NavLink to={"/add-tutorials"}>
               <li>Add Tutorials</li>
             </NavLink>
-            <li>My Tutorials</li>
-            <li>My booked tutors</li>
+            <NavLink to={"/my-tutorials"}>
+              <li>My Tutorials</li>
+            </NavLink>
+            <Link to={"/my-tutors"}>
+              <li>My booked tutors</li>
+            </Link>
           </ul>
         </div>
         <div className="flex items-center gap-2">

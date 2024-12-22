@@ -4,9 +4,12 @@ import AllTutors from "@/pages/AllTutors";
 import DetailsTutors from "@/pages/DetailsTutors";
 import Home from "@/pages/Home";
 import MyBooksList from "@/pages/MyBooksList";
+import MyTutorials from "@/pages/MyTutorials";
 import Signin from "@/pages/Signin";
 import Signup from "@/pages/Signup";
+import UpdateTutorial from "@/pages/UpdateTutorial";
 import { createBrowserRouter } from "react-router-dom";
+import PrivateRoutes from "./PrivateRoutes";
 
 export const routes = createBrowserRouter([
   {
@@ -23,15 +26,43 @@ export const routes = createBrowserRouter([
       },
       {
         path: "/my-tutors",
-        element: <MyBooksList />,
+        element: (
+          <PrivateRoutes>
+            <MyBooksList />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/add-tutorials",
-        element: <AddTutorials />,
+        element: (
+          <PrivateRoutes>
+            <AddTutorials />
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "/my-tutorials",
+        element: (
+          <PrivateRoutes>
+            <MyTutorials />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/tutor/:details",
-        element: <DetailsTutors />,
+        element: (
+          <PrivateRoutes>
+            <DetailsTutors />
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "/tutor/update/:id",
+        element: (
+          <PrivateRoutes>
+            <UpdateTutorial />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/find-tutors/:category",

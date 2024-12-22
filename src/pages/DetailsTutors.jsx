@@ -6,8 +6,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { useAuth } from "@/hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import toast from "react-hot-toast";
 import { BiSolidBadgeDollar } from "react-icons/bi";
 import { FaGraduationCap } from "react-icons/fa";
 import { FaCircleCheck } from "react-icons/fa6";
@@ -15,6 +17,7 @@ import { GiDrippingStar, GiGraduateCap } from "react-icons/gi";
 import { IoLanguage } from "react-icons/io5";
 import { useParams } from "react-router-dom";
 function DetailsTutors() {
+  const { user } = useAuth();
   const { details: id } = useParams();
   const { data } = useQuery({
     queryKey: ["tutor"],
@@ -22,6 +25,24 @@ function DetailsTutors() {
   });
   const { _id, name, image, price, category, description, review } =
     data?.data || {};
+  const handleBooking = () => {
+    const bookingDetails = {
+      tutorId: _id,
+      email: user?.email,
+      name,
+      image,
+      category,
+      price,
+    };
+    toast.promise(axios.post("/bookings", bookingDetails), {
+      loading: "Adding...",
+      success: <b>Booking added!</b>,
+      error: (err) => {
+        console.log(err);
+        return <b>{err.response.data}</b>;
+      },
+    });
+  };
   return (
     <div className="my-10 font-figtree">
       <div className="container px-4 grid grid-cols-12">
@@ -103,7 +124,9 @@ function DetailsTutors() {
                 </div>
               </div>
               <div className="mt-4">
-                <Button className="w-full">Book Now</Button>
+                <Button onClick={handleBooking} className="w-full">
+                  Book Now
+                </Button>
               </div>
             </CardContent>
           </Card>
