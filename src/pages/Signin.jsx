@@ -15,10 +15,20 @@ import { FaGithub, FaGoogle } from "react-icons/fa6";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export default function SignIn() {
-  const { handleGoogleLogin } = useAuth();
+  const { handleLogin, handleGoogleLogin } = useAuth();
   const { state } = useLocation();
-
   const navigate = useNavigate();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const { email, password } = Object.fromEntries(new FormData(e.target));
+    toast
+      .promise(handleLogin(email, password), {
+        loading: "Signin...",
+        success: <b>Signed in successfull !</b>,
+        error: <b>Could not signin.</b>,
+      })
+      .then(() => navigate(state || "/"));
+  };
   const handleGoogle = () => {
     toast
       .promise(handleGoogleLogin(), {
@@ -44,7 +54,7 @@ export default function SignIn() {
             Enter your info below to login to your account
           </CardDescription>
         </CardHeader>
-        <form>
+        <form onSubmit={handleSubmit}>
           <CardContent>
             <div className="grid gap-4">
               <div className="grid gap-2">

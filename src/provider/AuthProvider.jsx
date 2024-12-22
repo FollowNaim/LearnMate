@@ -7,6 +7,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 
@@ -27,6 +28,9 @@ function AuthProvider({ children }) {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, pass);
   };
+  const updateInfo = (data) => {
+    return updateProfile(auth.currentUser, data);
+  };
   const handleSignOut = () => {
     setLoading(true);
     return signOut(auth);
@@ -43,7 +47,6 @@ function AuthProvider({ children }) {
             name: currentUser.displayName,
             email: currentUser.email,
           };
-
           axios.post("/user", user);
         }
         setUser(currentUser);
@@ -58,6 +61,7 @@ function AuthProvider({ children }) {
     handleGoogleLogin,
     handleLogin,
     handleSignup,
+    updateInfo,
     handleSignOut,
   };
   return (

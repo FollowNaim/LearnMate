@@ -11,19 +11,35 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useAuth } from "@/hooks/useAuth";
+import axios from "axios";
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function SignUp() {
   const [isDisable, setIsDisable] = useState(true);
-
-  const { handleSignup } = useAuth();
+  const { handleSignup, updateInfo } = useAuth();
   const [pass, setPass] = useState("");
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-    const data = [...Object.fromEntries(new FormData(e.target))];
-    console.log(data);
+    const { name, email, photo } = Object.fromEntries(new FormData(e.target));
+    console.log(name);
+    toast
+      .promise(handleSignup(email, pass), {
+        loading: "Signin up...",
+        success: <b>Signed up successfull !</b>,
+        error: <b>Could not signup.</b>,
+      })
+      .then((res) => {
+        updateInfo({ displayName: name, photoURL: photo }).then(() => {
+          axios.patch("/user", {
+            name: res.user.displayName,
+            email: res.user.email,
+          });
+        });
+        navigate("/");
+      });
   };
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center w-full max-w-7xl mx-auto pr-4">
