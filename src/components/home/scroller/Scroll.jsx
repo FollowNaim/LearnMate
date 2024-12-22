@@ -3,40 +3,40 @@ import { cn } from "@/lib/utils";
 
 const reviews = [
   {
-    name: "Jack",
-    username: "@jack",
-    body: "I've never seen anything like this before. It's amazing. I love it.",
-    img: "https://avatar.vercel.sh/jack",
+    name: "Emily",
+    username: "@emily123",
+    body: "The best platform for learning languages. Highly recommend!",
+    img: "https://avatar.vercel.sh/emily",
   },
   {
-    name: "Jill",
-    username: "@jill",
-    body: "I don't know what to say. I'm speechless. This is amazing.",
-    img: "https://avatar.vercel.sh/jill",
+    name: "Daniel",
+    username: "@daniel_linguist",
+    body: "Easy booking, great tutors. Fantastic experience!",
+    img: "https://avatar.vercel.sh/daniel",
   },
   {
-    name: "John",
-    username: "@john",
-    body: "I'm at a loss for words. This is amazing. I love it.",
-    img: "https://avatar.vercel.sh/john",
+    name: "Sophia",
+    username: "@sophia_studies",
+    body: "Personalized and effective. I love it!",
+    img: "https://avatar.vercel.sh/sophia",
   },
   {
-    name: "Jane",
-    username: "@jane",
-    body: "I'm at a loss for words. This is amazing. I love it.",
-    img: "https://avatar.vercel.sh/jane",
+    name: "Michael",
+    username: "@michael_tutor",
+    body: "User-friendly and seamless for tutors.",
+    img: "https://avatar.vercel.sh/michael",
   },
   {
-    name: "Jenny",
-    username: "@jenny",
-    body: "I'm at a loss for words. This is amazing. I love it.",
-    img: "https://avatar.vercel.sh/jenny",
+    name: "Olivia",
+    username: "@olivia_languages",
+    body: "Fun and effective learning experience!",
+    img: "https://avatar.vercel.sh/olivia",
   },
   {
-    name: "James",
-    username: "@james",
-    body: "I'm at a loss for words. This is amazing. I love it.",
-    img: "https://avatar.vercel.sh/james",
+    name: "Liam",
+    username: "@liam_student",
+    body: "Made incredible progress here. Love it!",
+    img: "https://avatar.vercel.sh/liam",
   },
 ];
 
@@ -73,10 +73,11 @@ export function MarqueeDemo() {
     <div>
       <div className="relative flex py-10 w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background">
         <div className="mb-6 text-center">
-          <h2 className="text-3xl font-bold">Your next great tutor</h2>
+          <h2 className="text-3xl font-bold">
+            What Our <span className="text-pink-600"> Users Say</span>
+          </h2>
           <p className="text-muted-foreground mt-3">
-            Enjoy one-on-one instruction from the nations biggest network of
-            independent experts.
+            Real Experiences from Learners and Tutors
           </p>
         </div>
         <Marquee pauseOnHover className="[--duration:20s]">

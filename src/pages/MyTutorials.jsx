@@ -30,6 +30,9 @@ function MyTutorials() {
     queryKey: ["my-bookings"],
     queryFn: () => axios.get(`/my-tutorials/${user?.email}`),
   });
+  const handleDelete = (id) => {
+    axios.delete(`/tutors/${id}`);
+  };
   if (isLoading) return <Spinner />;
   return (
     <div className="mb-10 mt-2">
@@ -87,7 +90,9 @@ function MyTutorials() {
                         <Link to={`/tutor/update/${_id}`}>
                           <DropdownMenuItem>Update Tutorial</DropdownMenuItem>
                         </Link>
-                        <DropdownMenuItem>Delete Tutorial</DropdownMenuItem>
+                        <DropdownMenuItem onCLick={() => handleDelete(_id)}>
+                          Delete Tutorial
+                        </DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
                   </TableCell>

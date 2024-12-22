@@ -1,7 +1,48 @@
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import img1 from "@/assets/stats/01.png";
+import img2 from "@/assets/stats/02.png";
+import img3 from "@/assets/stats/03.png";
+import img4 from "@/assets/stats/04.png";
 import shape2 from "@/assets/stats/shape-02.png";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import SingleStats from "./SingleStats";
 function Stats2() {
+  const { data } = useQuery({
+    queryKey: ["stats"],
+    queryFn: async () => {
+      const count = await axios.get("/tutors?count=true");
+      const reviews = await axios.get("/tutors?reviews=true");
+      const users = await axios.get("/users");
+      return {
+        count: count.data,
+        reviews: reviews.data[0].review,
+        users: users.data,
+      };
+    },
+  });
+  console.log(data);
+  const stats = [
+    {
+      title: "Total tutors available for booking and guidance",
+      image: img2,
+      count: data?.count,
+    },
+    {
+      title: "Total reviews submitted by students on the platform",
+      image: img3,
+      count: data?.reviews,
+    },
+    {
+      title: "Languages available for learning and exchange on the platform",
+      image: img4,
+      count: 9,
+    },
+    {
+      title: "Active users including students and tutors",
+      image: img1,
+      count: data?.users,
+    },
+  ];
   return (
     <div className="bg-[#F7F8FC] relative my-10 py-10 font-figtree">
       <div
@@ -16,22 +57,8 @@ function Stats2() {
           </h2>
         </div>
         <div className="grid grid-cols-2 gap-4 z-50 relative">
-          {[...Array(4).keys()].map((item) => {
-            return (
-              <Card className="" key={item}>
-                <CardHeader className="flex flex-row gap-6 items-center">
-                  <div className="bg-destructive/20 p-3 w-fit rounded-full">
-                    <img className="size-10" src={img1} alt="" />
-                  </div>
-                  <div className="flex flex-col">
-                    <h5 className="text-lg font-semibold">560,616</h5>
-                    <p className="text-muted-foreground">
-                      Courses available for verified and top tutors
-                    </p>
-                  </div>
-                </CardHeader>
-              </Card>
-            );
+          {stats.map((item, i) => {
+            return <SingleStats item={item} key={i} />;
           })}
         </div>
       </div>
