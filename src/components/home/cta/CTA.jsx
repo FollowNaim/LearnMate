@@ -8,7 +8,7 @@ function CTA() {
     >
       <div>
         <h2 className="text-2xl font-semibold">
-          Looking to tutor with TutorHub?
+          Looking to tutor with LearnMate?
         </h2>
         <p className="mt-2 text-black/80">
           Were always looking for talented tutors. Set your own rate, get paid

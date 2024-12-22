@@ -10,9 +10,8 @@ function Category() {
           </h2>
         </div>
         <div className="grid grid-cols-3 mx-auto gap-5">
-          {[...Array(6).keys()].map((item) => (
-            <CategoryCard key={item} />
-          ))}
+          <CategoryCard title={"english"} />
+          <CategoryCard title={"bangla"} />
         </div>
       </div>
     </div>

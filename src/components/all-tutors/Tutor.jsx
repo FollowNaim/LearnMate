@@ -1,12 +1,14 @@
-import tutor from "@/assets/tutors/tutor.jpg";
 import { AiTwotoneDollarCircle } from "react-icons/ai";
 import { FaStar } from "react-icons/fa6";
 import { GiGraduateCap } from "react-icons/gi";
 import { MdOutlineTranslate } from "react-icons/md";
 import { PiStudent } from "react-icons/pi";
+import { Link } from "react-router-dom";
 import { Button } from "../ui/button";
 import { Card, CardContent, CardDescription, CardHeader } from "../ui/card";
-function Tutor() {
+function Tutor(props) {
+  const { _id, name, image, price, category, description, review } =
+    props.tutor;
   return (
     // <div>
     //   <div className="border rounded-md flex gap-4 items-center p-4">
@@ -65,7 +67,7 @@ function Tutor() {
         <div className="w-full h-full">
           <img
             className="w-32 h-full object-cover rounded-md"
-            src={tutor}
+            src={image}
             alt=""
           />
         </div>
@@ -73,7 +75,7 @@ function Tutor() {
       <CardContent className="p-6 pl-2">
         <CardDescription>
           <div>
-            <h2 className="text-xl font-semibold text-black">Phillip N.</h2>{" "}
+            <h2 className="text-xl font-semibold text-black">{name}</h2>{" "}
             <div className="mt-2">
               <p className="bg-destructive/20 px-1 rounded-md w-fit text-black/70">
                 Super Tutor
@@ -81,7 +83,10 @@ function Tutor() {
 
               <div className=" mt-4 flex flex-col gap-2">
                 <p className="flex items-center gap-3">
-                  <GiGraduateCap color="#000" size={18} /> <span>English</span>
+                  <GiGraduateCap color="#000" size={18} />{" "}
+                  <span>
+                    {category.charAt(0).toUpperCase() + category.slice(1)}
+                  </span>
                 </p>
                 <p className="flex items-center gap-3">
                   <PiStudent color="#000" size={18} />
@@ -106,20 +111,23 @@ function Tutor() {
               <FaStar /> <span className="font-medium">4.9</span>
             </p>
             <p>
-              6 <span className="text-muted-foreground">Review</span>
+              {review} <span className="text-muted-foreground">Review</span>
             </p>
           </p>
           <p className="">
             <p className="flex items-center gap-2">
-              <AiTwotoneDollarCircle /> <span className="font-medium">30</span>
+              <AiTwotoneDollarCircle />{" "}
+              <span className="font-medium">{price}</span>
             </p>
           </p>
         </div>
         <div className="mt-6 grow flex flex-col gap-3">
           <Button className="">Book Lesson</Button>
-          <Button variant="outline" className="">
-            See Details
-          </Button>
+          <Link to={`/tutor/${_id}`}>
+            <Button variant="outline" className="w-full">
+              See Details
+            </Button>
+          </Link>
         </div>
       </CardContent>
     </Card>
