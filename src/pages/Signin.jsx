@@ -33,7 +33,8 @@ export default function SignIn() {
           return <b>{err.message}</b>;
         },
       })
-      .then(() => navigate(state || "/"));
+      .then(() => navigate(state || "/"))
+      .catch((err) => console.log(err));
   };
   const handleGoogle = async () => {
     try {
