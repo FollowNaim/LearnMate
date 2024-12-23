@@ -19,7 +19,7 @@ function Category() {
             Find the perfect category for your learning goals.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto gap-5">
+        <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-cols-3 mx-auto gap-5">
           <CategoryCard count={data?.data.english || 0} title={"english"} />
           <CategoryCard count={data?.data.bangla || 0} title={"bangla"} />
           <CategoryCard count={data?.data.arabic || 0} title={"arabic"} />

@@ -48,13 +48,13 @@ export default function SignUp() {
       });
   };
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center w-full max-w-7xl mx-auto px-4 md:pl-0 md:pr-4">
+    <div className="grid grid-cols-1 lg:grid-cols-2 justify-center items-center w-full max-w-7xl mx-auto px-4 lg:pl-0 lg:pr-4">
       <div
-        className="col-span-1 bg-cover bg-right bg-no-repeat w-full h-full hidden md:block"
+        className="col-span-1 bg-cover bg-right bg-no-repeat w-full h-full hidden lg:block"
         style={{ backgroundImage: `url('${photo1}')` }}
       ></div>
       <form className="col-span-1 py-10" onSubmit={handleSubmit}>
-        <Card className="md:max-w-sm w-full  mx-auto ">
+        <Card className="lg:max-w-sm w-full  mx-auto ">
           <CardHeader className="space-y-1 text-center">
             <CardTitle className="text-2xl">Sign up your account</CardTitle>
             <CardDescription>

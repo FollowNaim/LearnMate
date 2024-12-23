@@ -32,7 +32,7 @@ function Header() {
             <h1 className="text-2xl font-bold">LearnMate </h1>
           </Link>
         </div>
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           <ul id="navlinks" className="flex items-center gap-4">
             <NavLink to={"/"}>
               <li>Home</li>

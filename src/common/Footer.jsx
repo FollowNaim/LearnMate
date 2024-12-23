@@ -9,8 +9,8 @@ import { Link } from "react-router-dom";
 function Footer() {
   return (
     <div className="border-t border-border">
-      <div className="container px-4 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-0 pt-14 pb-8">
-        <div className="md:col-span-3 md:pr-20 flex flex-col">
+      <div className="container px-4 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-0 pt-14 pb-8">
+        <div className="lg:col-span-3 lg:pr-20 flex flex-col">
           <h4 className="text-2xl font-bold">
             Learn <span className="text-red-600">Mate</span>
           </h4>
@@ -34,7 +34,7 @@ function Footer() {
           </div>
           {/* <img className="mt-4" src={payPhoto} alt="" /> */}
         </div>
-        <div className="md:col-span-2">
+        <div className="lg:col-span-2">
           <h4>Quick Links</h4>
           <div className="mt-4 text-muted-foreground/70">
             <ul className="flex flex-col gap-2">
@@ -62,7 +62,7 @@ function Footer() {
             </ul>
           </div>
         </div>
-        <div className="md:col-span-2">
+        <div className="lg:col-span-2">
           <h4>Customer Support</h4>
           <div className="mt-4 text-muted-foreground/70">
             <ul className="flex flex-col gap-2">
@@ -89,7 +89,7 @@ function Footer() {
             </ul>
           </div>
         </div>
-        <div className="md:col-span-2">
+        <div className="lg:col-span-2">
           <h4>Legal</h4>
           <div className="mt-4 text-muted-foreground/70">
             <ul className="flex flex-col gap-2">
@@ -116,7 +116,7 @@ function Footer() {
             </ul>
           </div>
         </div>
-        <div className="md:col-span-3">
+        <div className="lg:col-span-3">
           <h4>Our Instagram</h4>
           <div className="grid grid-cols-3 gap-3 mt-6">
             {/* <img className="rounded-xl" src={footer1} alt="" />
@@ -131,7 +131,7 @@ function Footer() {
         </div>
       </div>
       <div className="border-t border-border py-4 text-center">
-        <div className="container mx-auto px-4 flex flex-col-reverse md:flex-row gap-5 md:gap-0 justify-between items-center">
+        <div className="container mx-auto px-4 flex flex-col-reverse lg:flex-row gap-5 lg:gap-0 justify-between items-center">
           <p>Gear Arena © 2024 Developed by Naim</p>
           <div className="flex items-center gap-4">
             <a href="https://facebook.com">

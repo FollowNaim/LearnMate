@@ -57,13 +57,13 @@ export default function SignIn() {
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 justify-center max-w-7xl mx-auto px-4 md:pl-0 md:pr-4 items-center">
+    <div className="grid grid-cols-1 lg:grid-cols-2 justify-center max-w-7xl mx-auto px-4 lg:pl-0 lg:pr-4 items-center">
       <div
-        className="w-full h-full mx-auto col-span-1 hidden md:block bg-cover bg-no-repeat bg-top"
+        className="w-full h-full mx-auto col-span-1 hidden lg:block bg-cover bg-no-repeat bg-top"
         style={{ backgroundImage: `url('${photo1}')` }}
       ></div>
       <Card
-        className="md:max-w-sm w-full
+        className="lg:max-w-sm w-full
        mx-auto my-10 col-span-1"
       >
         <CardHeader>

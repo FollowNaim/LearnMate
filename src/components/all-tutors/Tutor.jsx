@@ -60,17 +60,17 @@ function Tutor(props) {
     //     </div>
     //   </div>
     // </div>
-    <Card className="flex flex-col md:flex-row md:items-center">
-      <CardHeader className="w-full h-full">
-        <div className="w-full h-full">
+    <Card className="flex flex-col lg:flex-row lg:items-center">
+      <CardHeader className="w-full lg:w-fit h-full">
+        <div className="w-full lg:w-fit h-full">
           <img
-            className="w-full object-top md:w-32 h-40 md:h-full object-cover rounded-md"
+            className="w-full object-top lg:w-32 h-48 md:h-72 lg:h-full object-cover rounded-md"
             src={image}
             alt=""
           />
         </div>
       </CardHeader>
-      <CardContent className="md:p-6 md:pl-2">
+      <CardContent className="lg:p-6 lg:pl-2">
         <CardDescription>
           <div>
             <h2 className="text-xl font-semibold text-black">{name}</h2>{" "}
@@ -102,7 +102,7 @@ function Tutor(props) {
           </div>
         </CardDescription>
       </CardContent>
-      <CardContent className="flex flex-col justify-between h-full md:p-6 md:ml-auto">
+      <CardContent className="flex flex-col justify-between h-full lg:p-6 lg:ml-auto">
         <div className="flex items-center gap-4 ">
           <p className="flex flex-col gap-1 ">
             <p className="flex items-center gap-2">

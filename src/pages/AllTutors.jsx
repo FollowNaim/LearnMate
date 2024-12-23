@@ -56,7 +56,7 @@ function AllTutors() {
   return (
     <div className="my-10">
       <div className="container px-4">
-        <div className="grid max-w-xl mx-auto grid-cols-2 md:grid-cols-3 justify-center items-center gap-6 mb-6">
+        <div className="grid max-w-xl mx-auto grid-cols-2 lg:grid-cols-3 justify-center items-center gap-6 mb-6">
           <div className="relative">
             {/* <Label htmlFor="role">Language</Label> */}
             <Input
@@ -111,7 +111,7 @@ function AllTutors() {
             </Button>
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 my-10">
           {!data.length
             ? "No data found!"
             : data?.map((tutor) => <Tutor tutor={tutor} key={tutor._id} />)}

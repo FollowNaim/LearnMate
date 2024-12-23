@@ -4,7 +4,7 @@ function SingleStats(props) {
   const { image, title, count } = props.item;
   return (
     <Card className="">
-      <CardHeader className="flex flex-col md:flex-row gap-6 md:items-center">
+      <CardHeader className="flex flex-col lg:flex-row gap-6 lg:items-center">
         <div className="bg-destructive/20 p-3 w-fit rounded-full">
           <img className="size-10" src={image} alt="" />
         </div>
