@@ -1,3 +1,4 @@
+import Spinner from "@/components/loader/Spinner";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -14,17 +15,18 @@ import { BiSolidBadgeDollar } from "react-icons/bi";
 import { FaGraduationCap } from "react-icons/fa";
 import { FaCircleCheck } from "react-icons/fa6";
 import { GiDrippingStar, GiGraduateCap } from "react-icons/gi";
-import { IoLanguage } from "react-icons/io5";
+import { PiStudent } from "react-icons/pi";
 import { useParams } from "react-router-dom";
 function DetailsTutors() {
   const { user } = useAuth();
   const { details: id } = useParams();
-  const { data } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["tutor"],
     queryFn: () => axios.get(`/tutors/${id}`),
   });
-  const { _id, name, image, price, category, description, review } =
+  const { _id, name, image, bookings, price, category, description, review } =
     data?.data || {};
+  const rnYear = Math.floor(Math.random() * 10 + 1);
   const handleBooking = () => {
     const bookingDetails = {
       tutorId: _id,
@@ -43,6 +45,7 @@ function DetailsTutors() {
       },
     });
   };
+  if (isLoading) return <Spinner />;
   return (
     <div className="my-10 font-figtree">
       <div className="container px-4 grid grid-cols-12">
@@ -51,30 +54,42 @@ function DetailsTutors() {
             <CardHeader>
               <CardTitle className="text-2xl">{name}</CardTitle>
               <CardDescription>
-                Certified TEFL English tutor with 8 years experience in online
-                and classroom teaching
+                Certified TEFL{" "}
+                {category?.charAt(0).toUpperCase() + category?.slice(1)} tutor
+                with {rnYear} years experience in online and classroom teaching
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="flex flex-col gap-3 mt-6">
-                <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-3 mt-4">
+                {/* <div className="flex flex-col gap-2">
                   <div className="flex items-center gap-2">
                     <IoLanguage size={20} />{" "}
                     <span className="font-semibold">Languages</span>
                   </div>
                   <span className="text-muted-foreground">
-                    Speaks English (Native), German (Native)
+                    {category.charAt(0).toUpperCase() + category.slice(1)}
                   </span>
-                </div>
+                </div> */}
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center gap-2">
                     <GiGraduateCap size={20} />{" "}
                     <span className="font-semibold">Teaches</span>
                   </div>
-                  <span className="text-muted-foreground">{category}</span>
+                  <span className="text-muted-foreground">
+                    {category?.charAt(0).toUpperCase() + category?.slice(1)}
+                  </span>
+                </div>
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center gap-2">
+                    <PiStudent size={20} />{" "}
+                    <span className="font-semibold">Students</span>
+                  </div>
+                  <span className="text-muted-foreground">
+                    {bookings}+ active students
+                  </span>
                 </div>
               </div>
-              <div className="flex flex-col gap-3 mt-4">
+              <div className="flex flex-col gap-3 mt-8">
                 <div className="flex flex-col gap-2">
                   <div className="flex items-center gap-2">
                     <FaCircleCheck size={20} color="green" />{" "}
@@ -83,7 +98,16 @@ function DetailsTutors() {
                     </span>
                   </div>
                   <span className="text-muted-foreground">
-                    Try another tutor for free or get a refund
+                    Not satisfied? Get your money back.
+                  </span>
+                </div>
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center gap-2">
+                    <FaCircleCheck size={20} color="green" />{" "}
+                    <span className="font-semibold">Flexible Options</span>
+                  </div>
+                  <span className="text-muted-foreground">
+                    Switch tutors or claim a refund with ease.
                   </span>
                 </div>
               </div>
@@ -91,11 +115,18 @@ function DetailsTutors() {
             <CardContent className="mt-6">
               <div className="flex flex-col gap-3">
                 <h2 className="font-bold text-xl">About Me:</h2>
-                <p>
-                  Sophia is an experienced Spanish tutor with over 5 years of
-                  teaching experience. She specializes in conversational Spanish
-                  and grammar for beginners and intermediate learners.
+                <p className="text-muted-foreground">
+                  {name} is an experienced{" "}
+                  {category?.charAt(0).toUpperCase() + category?.slice(1)} tutor
+                  with over {rnYear} years of teaching experience. She
+                  specializes in conversational{" "}
+                  {category?.charAt(0).toUpperCase() + category?.slice(1)} and
+                  grammar for beginners and intermediate learners.
                 </p>
+              </div>
+              <div className="flex flex-col gap-3 mt-6">
+                <h2 className="font-bold text-xl">Description:</h2>
+                <p className="text-muted-foreground">{description}</p>
               </div>
             </CardContent>
           </Card>
@@ -115,7 +146,7 @@ function DetailsTutors() {
                 <div className="flex items-center gap-2">
                   <BiSolidBadgeDollar size={18} />
                   <p>Price:</p>
-                  <h2 className="">{price}</h2>
+                  <h2 className="">$ {price}</h2>
                 </div>
                 <div className="flex items-center gap-2">
                   <GiDrippingStar size={18} />

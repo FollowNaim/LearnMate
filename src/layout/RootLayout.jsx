@@ -9,7 +9,7 @@ function RootLayout() {
       <ScrollRestoration />
       <Toaster />
       <Header />
-      <div className="min-h-[calc(100vh_-_100px)]">
+      <div className="">
         <Outlet />
       </div>
       <Footer />

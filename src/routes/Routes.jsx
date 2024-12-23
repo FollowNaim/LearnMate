@@ -2,6 +2,7 @@ import RootLayout from "@/layout/RootLayout";
 import AddTutorials from "@/pages/AddTutorials";
 import AllTutors from "@/pages/AllTutors";
 import DetailsTutors from "@/pages/DetailsTutors";
+import Error404 from "@/pages/Error404";
 import Home from "@/pages/Home";
 import MyBooksList from "@/pages/MyBooksList";
 import MyTutorials from "@/pages/MyTutorials";
@@ -15,6 +16,7 @@ export const routes = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
+    errorElement: <Error404 />,
     children: [
       {
         path: "/",

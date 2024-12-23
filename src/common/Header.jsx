@@ -1,7 +1,19 @@
+import defaultUser from "@/assets/header/user.png";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
 import toast from "react-hot-toast";
 import { Link, NavLink } from "react-router-dom";
+import { Tooltip } from "react-tooltip";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 function Header() {
   const { user, handleSignOut } = useAuth();
@@ -49,9 +61,46 @@ function Header() {
             </>
           )}
           {user && (
-            <Button onClick={handleLogout} className="">
-              Sign Out
-            </Button>
+            <>
+              <Tooltip id="name-tooltip" />
+              <div className="flex items-center gap-2">
+                <div className="flex items-center">
+                  <DropdownMenu>
+                    <DropdownMenuTrigger>
+                      <Avatar>
+                        <AvatarImage
+                          className="object-cover"
+                          data-tooltip-id="name-tooltip"
+                          data-tooltip-content={user.displayName || "N/A"}
+                          referrerPolicy="no-referrer"
+                          src={user?.photoURL || defaultUser}
+                          alt={user?.displayName}
+                        />
+                        <AvatarFallback>N</AvatarFallback>
+                      </Avatar>
+                      {/* <img
+                        className="object-cover size-10 rounded-full"
+                        data-tooltip-id="name-tooltip"
+                        data-tooltip-content={user.displayName || "N/A"}
+                        referrerPolicy="no-referrer"
+                        alt={user?.displayName}
+                        src={user?.photoURL || defaultUser}
+                      /> */}
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent>
+                      <DropdownMenuLabel>User Name</DropdownMenuLabel>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem>
+                        {user?.displayName || "N/A"}
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </div>
+                <Button onClick={handleLogout} className="">
+                  Sign Out
+                </Button>
+              </div>
+            </>
           )}
         </div>
       </div>

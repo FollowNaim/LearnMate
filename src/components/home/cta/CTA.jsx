@@ -15,7 +15,7 @@ function CTA() {
           and make a difference
         </p>
         <Button className="mt-6" size="lg">
-          Book Now
+          Join Our Tutor Team Today!
         </Button>
       </div>
     </div>

@@ -38,14 +38,12 @@ function AllTutors() {
   // if (isLoading) return <Spinner />;
   // if (!data.data.length) return <p>No data found!</p>;
   useEffect(() => {
-    setLoading(true);
     axios
       .get(`/tutors?category=${categories || category || ""}&search=${search}`)
       .then((res) => {
         setData(res.data);
         setLoading(false);
       });
-    console.log(categories, category);
   }, [search, categories, category]);
   // useEffect(() => {
   //   setLoading(true);
@@ -112,7 +110,7 @@ function AllTutors() {
             </Button>
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-4 my-10">
           {!data.length
             ? "No data found!"
             : data?.map((tutor) => <Tutor tutor={tutor} key={tutor._id} />)}

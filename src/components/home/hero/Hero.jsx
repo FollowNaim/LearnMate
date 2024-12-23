@@ -1,6 +1,7 @@
 import hero from "@/assets/hero/hero.jpg";
 import { IoIosCheckmarkCircle } from "react-icons/io";
 import { Button } from "../../ui/button";
+import check from "@/assets/hero/check.png";
 function Hero() {
   return (
     <div className="bg-destructive/20 ">
@@ -16,22 +17,22 @@ function Hero() {
             tutors and expertly crafted courses designed to help you achieve
             your goals and thrive in your academic or professional journey.
           </p>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-3">
             <p className="flex items-center gap-3">
-              <IoIosCheckmarkCircle fill="green" color="orange" />{" "}
-              <span>Take customizable 1-on-1</span>
+              <img className="size-5" src={check} />
+              <span>Top Tutors, Tailored to You</span>
             </p>
             <p className="flex items-center gap-3">
-              <IoIosCheckmarkCircle fill="green" color="orange" />{" "}
-              <span>lessons trusted by millions of users</span>
+              <img className="size-5" src={check} />
+              <span>1-on-1 Lessons, Fully Customizable</span>
             </p>
             <p className="flex items-center gap-3">
-              <IoIosCheckmarkCircle fill="green" color="orange" />{" "}
-              <span>Take lessons trusted by millions of users</span>
+              <img className="size-5" src={check} />
+              <span>Trusted by Millions Worldwide</span>
             </p>
           </div>
           <Button size="lg" className="mt-8">
-            Start Now
+            Start Your Journey Today!
           </Button>
         </div>
         <div className="col-span-1 h-full w-full">

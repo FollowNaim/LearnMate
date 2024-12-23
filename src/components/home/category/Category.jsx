@@ -11,10 +11,13 @@ function Category() {
   return (
     <div className="my-10">
       <div className="container px-4">
-        <div>
-          <h2 className="text-center text-3xl font-semibold mb-10">
-            Our Categories
+        <div className=" mb-10">
+          <h2 className="text-center text-3xl font-semibold">
+            Explore Our <span className="text-red-600">Expert Categories</span>
           </h2>
+          <p className="text-center mx-auto max-w-lg mt-4 text-muted-foreground">
+            Find the perfect category for your learning goals.
+          </p>
         </div>
         <div className="grid grid-cols-3 mx-auto gap-5">
           <CategoryCard count={data?.data.english || 0} title={"english"} />

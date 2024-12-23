@@ -34,6 +34,7 @@ export default function AddTutorials() {
     data.name = user?.displayName;
     data.email = user?.email;
     data.review = 0;
+    data.bookings = 0;
     toast
       .promise(axios.post("/tutors", data), {
         loading: "Adding...",
