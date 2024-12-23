@@ -12,11 +12,11 @@ function Footer() {
       <div className="container px-4 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-0 pt-14 pb-8">
         <div className="md:col-span-3 md:pr-20 flex flex-col">
           <h4 className="text-2xl font-bold">
-            Gear <span className="text-destructive">Arena</span>
+            Learn <span className="text-red-600">Mate</span>
           </h4>
           <p className="text-muted-foreground mt-3">
-            span Delivering premium sports gear to elevate your game and inspire
-            greatness.
+            Empowering your journey with personalized tutoring and tailored
+            learning solutions to achieve greatness.
           </p>
           <div className="mt-4">
             <p className="flex items-center gap-3">
@@ -28,7 +28,7 @@ function Footer() {
             <p className="flex items-center gap-3 mt-2">
               <MdOutlineDateRange />{" "}
               <span className="text-muted-foreground/90">
-                Sat-Sun: 10AM-8PM
+                Sat - Sun: 10AM-8PM
               </span>
             </p>
           </div>

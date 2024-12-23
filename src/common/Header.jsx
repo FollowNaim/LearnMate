@@ -8,12 +8,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
 import toast from "react-hot-toast";
 import { Link, NavLink } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 function Header() {
   const { user, handleSignOut } = useAuth();
@@ -28,9 +28,11 @@ function Header() {
     <div>
       <div className="container px-4 border-b border-border flex justify-between items-center py-2">
         <div>
-          <h1 className="text-2xl font-bold">LearnMate </h1>
+          <Link to={"/"}>
+            <h1 className="text-2xl font-bold">LearnMate </h1>
+          </Link>
         </div>
-        <div>
+        <div className="hidden md:block">
           <ul id="navlinks" className="flex items-center gap-4">
             <NavLink to={"/"}>
               <li>Home</li>

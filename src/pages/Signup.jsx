@@ -48,7 +48,7 @@ export default function SignUp() {
       });
   };
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center w-full max-w-7xl mx-auto pr-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center w-full max-w-7xl mx-auto px-4 md:pl-0 md:pr-4">
       <div
         className="col-span-1 bg-cover bg-right bg-no-repeat w-full h-full hidden md:block"
         style={{ backgroundImage: `url('${photo1}')` }}

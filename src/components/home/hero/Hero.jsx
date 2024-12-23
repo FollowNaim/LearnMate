@@ -1,12 +1,11 @@
-import hero from "@/assets/hero/hero.jpg";
-import { IoIosCheckmarkCircle } from "react-icons/io";
-import { Button } from "../../ui/button";
 import check from "@/assets/hero/check.png";
+import hero from "@/assets/hero/hero.jpg";
+import { Button } from "../../ui/button";
 function Hero() {
   return (
     <div className="bg-destructive/20 ">
-      <div className="grid grid-cols-2 justify-between items-center pl-4 container">
-        <div className="col-span-1 py-20">
+      <div className="grid grid-cols-1 md:grid-cols-2 justify-between items-center md:pl-4 container">
+        <div className="col-span-1 py-20 px-4 md:px-0">
           <h4 className="text-4xl font-bold max-w-lg leading-tight">
             <span className="text-red-600">Top</span> tutors. Tailored
             <span className="text-red-600"> courses. </span>
@@ -35,9 +34,9 @@ function Hero() {
             Start Your Journey Today!
           </Button>
         </div>
-        <div className="col-span-1 h-full w-full">
+        <div className="col-span-1 order-first md:order-none h-full w-full">
           <div
-            className="h-full w-full bg-cover bg-no-repeat"
+            className="h-96 md:h-full bg-center w-full bg-cover bg-no-repeat"
             style={{ backgroundImage: `url('${hero}')` }}
           >
             {/* <img className="w-11/12 mx-auto" src={hero} alt="" /> */}

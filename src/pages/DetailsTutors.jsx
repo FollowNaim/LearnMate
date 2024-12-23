@@ -48,9 +48,9 @@ function DetailsTutors() {
   if (isLoading) return <Spinner />;
   return (
     <div className="my-10 font-figtree">
-      <div className="container px-4 grid grid-cols-12">
+      <div className="container px-4 grid grid-cols-1 md:grid-cols-12">
         <div className="col-span-9">
-          <Card className="rounded-r-none">
+          <Card className="rounded-b-none md:rounded-r-none">
             <CardHeader>
               <CardTitle className="text-2xl">{name}</CardTitle>
               <CardDescription>
@@ -132,7 +132,7 @@ function DetailsTutors() {
           </Card>
         </div>
         <div className="col-span-3 sticky top-4 h-fit">
-          <Card className="rounded-l-none">
+          <Card className="rounded-t-none md:rounded-l-none">
             <CardHeader>
               <img className="h-64 object-cover" src={image} alt="" />
             </CardHeader>

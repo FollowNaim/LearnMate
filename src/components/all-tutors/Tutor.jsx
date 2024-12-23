@@ -1,10 +1,7 @@
-import { AiTwotoneDollarCircle } from "react-icons/ai";
-import { FaStar } from "react-icons/fa6";
 import { GiGraduateCap } from "react-icons/gi";
 import { MdOutlineTranslate } from "react-icons/md";
 import { PiStudent } from "react-icons/pi";
 import { Link } from "react-router-dom";
-import tag from "@/assets/tutors/tag.png";
 import { Button } from "../ui/button";
 import { Card, CardContent, CardDescription, CardHeader } from "../ui/card";
 function Tutor(props) {
@@ -63,17 +60,17 @@ function Tutor(props) {
     //     </div>
     //   </div>
     // </div>
-    <Card className="flex items-center">
-      <CardHeader className="h-full">
+    <Card className="flex flex-col md:flex-row md:items-center">
+      <CardHeader className="w-full h-full">
         <div className="w-full h-full">
           <img
-            className="w-32 h-full object-cover rounded-md"
+            className="w-full object-top md:w-32 h-40 md:h-full object-cover rounded-md"
             src={image}
             alt=""
           />
         </div>
       </CardHeader>
-      <CardContent className="p-6 pl-2">
+      <CardContent className="md:p-6 md:pl-2">
         <CardDescription>
           <div>
             <h2 className="text-xl font-semibold text-black">{name}</h2>{" "}
@@ -105,7 +102,7 @@ function Tutor(props) {
           </div>
         </CardDescription>
       </CardContent>
-      <CardContent className="flex flex-col justify-between h-full p-6 ml-auto">
+      <CardContent className="flex flex-col justify-between h-full md:p-6 md:ml-auto">
         <div className="flex items-center gap-4 ">
           <p className="flex flex-col gap-1 ">
             <p className="flex items-center gap-2">

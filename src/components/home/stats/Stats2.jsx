@@ -56,7 +56,7 @@ function Stats2() {
             <span className="text-blue-600">#Our success</span>
           </h2>
         </div>
-        <div className="grid grid-cols-2 gap-4 z-50 relative">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 z-50 relative">
           {stats.map((item, i) => {
             return <SingleStats item={item} key={i} />;
           })}
