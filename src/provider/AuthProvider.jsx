@@ -42,15 +42,28 @@ function AuthProvider({ children }) {
     const unsubscribe = () => {
       onAuthStateChanged(auth, (currentUser) => {
         if (currentUser?.email) {
+          setLoading(true);
           const user = {
             uid: currentUser.uid,
             name: currentUser.displayName,
             email: currentUser.email,
           };
           axios.post("/user", user);
+          const { data } = axios
+            .post(
+              "/jwt",
+              { name: currentUser.displayName, email: currentUser.email },
+              { withCredentials: true }
+            )
+            .then(() => {
+              setUser(currentUser);
+              setLoading(false);
+            });
+          console.log(data);
+        } else {
+          setUser(currentUser);
+          setLoading(false);
         }
-        setUser(currentUser);
-        setLoading(false);
       });
     };
     return () => unsubscribe();

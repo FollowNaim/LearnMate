@@ -15,7 +15,8 @@ import { FaGithub, FaGoogle } from "react-icons/fa6";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export default function SignIn() {
-  const { handleLogin, handleGoogleLogin, user, setLoading } = useAuth();
+  const { handleLogin, handleGoogleLogin, user, setLoading, loading } =
+    useAuth();
   const { state } = useLocation();
   const navigate = useNavigate();
   // useEffect(() => {
@@ -45,6 +46,7 @@ export default function SignIn() {
           },
         })
         .then(() => {
+          console.log(state);
           navigate(state || "/");
           setLoading(false);
         });

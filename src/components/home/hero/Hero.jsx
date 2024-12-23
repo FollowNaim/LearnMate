@@ -6,10 +6,15 @@ function Hero() {
     <div className="bg-destructive/20 ">
       <div className="grid grid-cols-2 justify-between items-center pl-4 container">
         <div className="col-span-1 py-20">
-          <h4 className="text-4xl font-bold">Become fluent in any language</h4>
+          <h4 className="text-4xl font-bold max-w-lg leading-tight">
+            <span className="text-red-600">Top</span> tutors. Tailored
+            <span className="text-red-600"> courses. </span>
+            Achieve <span className="text-red-600"> success. </span>
+          </h4>
           <p className="py-4 max-w-md text-muted-foreground">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Porro
-            magni quisquam soluta sint, nemo nisi at. Amet sed voluptate animi!
+            Unlock your full potential with personalized learning from top-rated
+            tutors and expertly crafted courses designed to help you achieve
+            your goals and thrive in your academic or professional journey.
           </p>
           <div className="flex flex-col gap-2">
             <p className="flex items-center gap-3">

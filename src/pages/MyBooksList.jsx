@@ -10,19 +10,27 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useAuth } from "@/hooks/useAuth";
+import useAxiosSecure from "@/hooks/useAxiosSecure";
+
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import axios from "axios";
 import toast from "react-hot-toast";
 
 function MyBooksList() {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
   const queryClient = useQueryClient();
-  const { data, isLoading } = useQuery({
+  const axiosSecure = useAxiosSecure();
+  const { data, isLoading, isError } = useQuery({
     queryKey: ["my-bookings"],
-    queryFn: () => axios.get(`/bookings?email=${user?.email}`),
+    queryFn: async () => {
+      const response = await axiosSecure.get(`/bookings?email=${user?.email}`);
+      if (response.status === 401) {
+        throw new Error("unauthorized");
+      }
+      return response;
+    },
   });
   const mutation = useMutation({
-    mutationFn: (id) => axios.patch(`/update-review/${id}`),
+    mutationFn: (id) => axiosSecure.patch(`/update-review/${id}`),
     onSuccess: () =>
       queryClient.invalidateQueries({ queryKey: ["my-bookings"] }),
   });
@@ -33,7 +41,13 @@ function MyBooksList() {
       error: <b>Could not added.</b>,
     });
   };
-  if (isLoading) return <Spinner />;
+  console.log(data);
+  if (isLoading || loading) return <Spinner />;
+  if (isError) {
+    queryClient.invalidateQueries({ queryKey: ["my-bookings"] });
+    return <p>Something went wrong</p>;
+  }
+  console.log(data);
   return (
     <div className="mb-10 mt-2">
       <div className="container px-4">
