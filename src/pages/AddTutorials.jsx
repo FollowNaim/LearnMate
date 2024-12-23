@@ -22,17 +22,27 @@ import { Textarea } from "@/components/ui/textarea";
 import { useAuth } from "@/hooks/useAuth";
 import axios from "axios";
 import Lottie from "lottie-react";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 export default function AddTutorials() {
   const { user } = useAuth();
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.target));
     data.name = user?.displayName;
     data.email = user?.email;
     data.review = 0;
-    const res = axios.post("/tutors", data);
-    console.log(res);
+    toast
+      .promise(axios.post("/tutors", data), {
+        loading: "Adding...",
+        success: <b>Added successfull !</b>,
+        error: (err) => {
+          return <b>{err.message}</b>;
+        },
+      })
+      .then(() => navigate("/my-tutorials"));
   };
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 max-w-7xl mx-auto items-center justify-center mt-10 mb-14 px-4 md:px-6">

@@ -34,19 +34,21 @@ export default function UpdateTutorial() {
     queryFn: () => axios.get(`/tutors/${id}`),
   });
   const navigate = useNavigate();
-  const { _id, name, image, description, category, price, review } = data?.data;
+  const { _id, name, image, description, category, price, review } =
+    data?.data || {};
+  console.log(data);
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.target));
     data.name = user?.displayName;
     data.email = user?.email;
-    data.review = 0;
-    toast.promise(axios.put(`/tutors/${_id}`, data), {
-      loading: "Updating...",
-      success: <b>Updated successfull !</b>,
-      error: <b>Could not update.</b>,
-    });
-    navigate("/my-tutorials");
+    toast
+      .promise(axios.put(`/tutors/${_id}`, data), {
+        loading: "Updating...",
+        success: <b>Updated successfull !</b>,
+        error: <b>Could not update.</b>,
+      })
+      .then(() => navigate("/my-tutorials"));
   };
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 max-w-7xl mx-auto items-center justify-center mt-10 mb-14 px-4 md:px-6">
@@ -119,6 +121,16 @@ export default function UpdateTutorial() {
                     <SelectItem value="chinese">Chinese</SelectItem>
                   </SelectContent>
                 </Select>
+              </div>
+              <div className="grid gap-2 w-full">
+                <Label htmlFor="review">Review</Label>
+                <Input
+                  defaultValue={review}
+                  disabled
+                  name="review"
+                  id="review"
+                  type="number"
+                />
               </div>
             </div>
             <div className="flex items-center gap-3">

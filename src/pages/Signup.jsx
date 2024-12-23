@@ -12,15 +12,18 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useAuth } from "@/hooks/useAuth";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function SignUp() {
   const [isDisable, setIsDisable] = useState(true);
-  const { handleSignup, updateInfo } = useAuth();
+  const { handleSignup, updateInfo, user, setLoading } = useAuth();
   const [pass, setPass] = useState("");
   const navigate = useNavigate();
+  useEffect(() => {
+    if (user) navigate("/");
+  }, [user]);
   const handleSubmit = (e) => {
     e.preventDefault();
     const { name, email, photo } = Object.fromEntries(new FormData(e.target));
@@ -29,7 +32,10 @@ export default function SignUp() {
       .promise(handleSignup(email, pass), {
         loading: "Signin up...",
         success: <b>Signed up successfull !</b>,
-        error: <b>Could not signup.</b>,
+        error: (err) => {
+          setLoading(false);
+          return <b>{err.message}</b>;
+        },
       })
       .then((res) => {
         updateInfo({ displayName: name, photoURL: photo }).then(() => {

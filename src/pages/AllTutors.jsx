@@ -2,8 +2,8 @@ import Tutor from "@/components/all-tutors/Tutor";
 import { Input } from "@/components/ui/input";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-
 import { Button } from "@/components/ui/button";
+import { IoIosSearch } from "react-icons/io";
 import {
   Select,
   SelectContent,
@@ -51,15 +51,16 @@ function AllTutors() {
     <div className="my-10">
       <div className="container px-4">
         <div className="grid max-w-xl mx-auto grid-cols-3 justify-center items-center gap-6 mb-6">
-          <div className="">
+          <div className="relative">
             {/* <Label htmlFor="role">Language</Label> */}
             <Input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               name="search"
               type="text"
-              placeholder="Search here..."
+              placeholder="Search Here..."
             />
+            <IoIosSearch color="#737373" className="absolute top-3 right-2" />
           </div>
           <div className="w-full">
             <div className="flex w-full items-center gap-3">
@@ -92,7 +93,14 @@ function AllTutors() {
             </div>
           </div>
           <div>
-            <Button>Reset</Button>
+            <Button
+              onClick={() => {
+                setCategories("");
+                setSearch("");
+              }}
+            >
+              Reset
+            </Button>
           </div>
         </div>
         <div className="grid grid-cols-2 gap-4">

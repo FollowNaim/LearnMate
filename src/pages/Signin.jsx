@@ -15,9 +15,12 @@ import { FaGithub, FaGoogle } from "react-icons/fa6";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export default function SignIn() {
-  const { handleLogin, handleGoogleLogin } = useAuth();
+  const { handleLogin, handleGoogleLogin, user, setLoading } = useAuth();
   const { state } = useLocation();
   const navigate = useNavigate();
+  // useEffect(() => {
+  //   if (user) navigate("/");
+  // }, []);
   const handleSubmit = (e) => {
     e.preventDefault();
     const { email, password } = Object.fromEntries(new FormData(e.target));
@@ -25,19 +28,32 @@ export default function SignIn() {
       .promise(handleLogin(email, password), {
         loading: "Signin...",
         success: <b>Signed in successfull !</b>,
-        error: <b>Could not signin.</b>,
+        error: (err) => {
+          return <b>{err.message}</b>;
+        },
       })
       .then(() => navigate(state || "/"));
   };
-  const handleGoogle = () => {
-    toast
-      .promise(handleGoogleLogin(), {
-        loading: "Signin...",
-        success: <b>Signed in successfull !</b>,
-        error: <b>Could not signin.</b>,
-      })
-      .then(navigate(state || "/"));
+  const handleGoogle = async () => {
+    try {
+      toast
+        .promise(handleGoogleLogin(), {
+          loading: "Signin...",
+          success: <b>Signed in successfull !</b>,
+          error: (err) => {
+            return <b>{err.message}</b>;
+          },
+        })
+        .then(() => {
+          navigate(state || "/");
+          setLoading(false);
+        });
+    } catch (err) {
+      setLoading(false);
+      console.log(err);
+    }
   };
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 justify-center max-w-7xl mx-auto pr-4 items-center">
       <div

@@ -1,7 +1,7 @@
 import { GiLightningSpanner } from "react-icons/gi";
 import { IoIosArrowForward } from "react-icons/io";
 import { Link } from "react-router-dom";
-function CategoryCard({ title }) {
+function CategoryCard({ title, count }) {
   return (
     <div>
       <Link to={`/find-tutors/${title}`}>
@@ -14,7 +14,7 @@ function CategoryCard({ title }) {
               </span>
             </p>
             <p className="text-secondary-foreground/80 text-sm">
-              120+ Teachers
+              {count}+ Teachers
             </p>
           </div>
           <p>

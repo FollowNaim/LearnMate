@@ -19,19 +19,43 @@ import {
 } from "@/components/ui/table";
 import { useAuth } from "@/hooks/useAuth";
 
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { MoreHorizontal } from "lucide-react";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function MyTutorials() {
   const { user } = useAuth();
+  const queryClient = useQueryClient();
   const { data, isLoading } = useQuery({
     queryKey: ["my-bookings"],
     queryFn: () => axios.get(`/my-tutorials/${user?.email}`),
   });
+  const mutation = useMutation({
+    mutationFn: (id) => axios.delete(`/tutors/${id}`),
+    onSuccess: () => queryClient.invalidateQueries(["my-bookings"]),
+  });
   const handleDelete = (id) => {
-    axios.delete(`/tutors/${id}`);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        mutation.mutateAsync(id).then(() =>
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your tutorial has been deleted.",
+            icon: "success",
+          })
+        );
+      }
+    });
   };
   if (isLoading) return <Spinner />;
   return (
@@ -90,7 +114,7 @@ function MyTutorials() {
                         <Link to={`/tutor/update/${_id}`}>
                           <DropdownMenuItem>Update Tutorial</DropdownMenuItem>
                         </Link>
-                        <DropdownMenuItem onCLick={() => handleDelete(_id)}>
+                        <DropdownMenuItem onClick={() => handleDelete(_id)}>
                           Delete Tutorial
                         </DropdownMenuItem>
                       </DropdownMenuContent>
