@@ -18,6 +18,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useAuth } from "@/hooks/useAuth";
+import useAxiosSecure from "@/hooks/useAxiosSecure";
 
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
@@ -28,12 +29,14 @@ import Swal from "sweetalert2";
 function MyTutorials() {
   const { user } = useAuth();
   const queryClient = useQueryClient();
+  const axiosSecure = useAxiosSecure();
   const { data, isLoading } = useQuery({
     queryKey: ["my-bookings"],
-    queryFn: () => axios.get(`/my-tutorials/${user?.email}`),
+    queryFn: () => axiosSecure.get(`/my-tutorials/${user?.email}`),
   });
   const mutation = useMutation({
-    mutationFn: (id) => axios.delete(`/tutors/${id}`),
+    mutationFn: (id) =>
+      axiosSecure.delete(`/tutors/${id}`, { email: user?.email }),
     onSuccess: () => queryClient.invalidateQueries(["my-bookings"]),
   });
   const handleDelete = (id) => {
