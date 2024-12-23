@@ -1,9 +1,7 @@
 import Tutor from "@/components/all-tutors/Tutor";
-import { Input } from "@/components/ui/input";
-import axios from "axios";
-import { useParams } from "react-router-dom";
+import Spinner from "@/components/loader/Spinner";
 import { Button } from "@/components/ui/button";
-import { IoIosSearch } from "react-icons/io";
+import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
@@ -11,13 +9,18 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import axios from "axios";
 import { useEffect, useState } from "react";
+import { IoIosSearch } from "react-icons/io";
+import { useNavigate, useParams } from "react-router-dom";
 
 function AllTutors() {
   const [search, setSearch] = useState("");
   const [categories, setCategories] = useState("");
   const { category } = useParams();
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
   // const [myData, setMyData] = useState([]);
   // const { data, isLoading } = useQuery({
   //   queryKey: ["tutors"],
@@ -35,18 +38,23 @@ function AllTutors() {
   // if (isLoading) return <Spinner />;
   // if (!data.data.length) return <p>No data found!</p>;
   useEffect(() => {
-    axios.get(`/tutors?category=${categories}&search=${search}`).then((res) => {
-      setData(res.data);
-      console.log(res);
-    });
-  }, [search, categories]);
-  useEffect(() => {
-    axios.get(`/tutors?category=${category || ""}`).then((res) => {
-      setData(res.data);
-      console.log(res);
-    });
-  }, [category]);
-
+    setLoading(true);
+    axios
+      .get(`/tutors?category=${categories || category || ""}&search=${search}`)
+      .then((res) => {
+        setData(res.data);
+        setLoading(false);
+      });
+    console.log(categories, category);
+  }, [search, categories, category]);
+  // useEffect(() => {
+  //   setLoading(true);
+  //   axios.get(`/tutors?category=${category || ""}`).then((res) => {
+  //     setData(res.data);
+  //     setLoading(false);
+  //   });
+  // }, [category]);
+  if (loading) return <Spinner />;
   return (
     <div className="my-10">
       <div className="container px-4">
@@ -97,6 +105,7 @@ function AllTutors() {
               onClick={() => {
                 setCategories("");
                 setSearch("");
+                navigate("/find-tutors");
               }}
             >
               Reset
