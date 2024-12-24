@@ -3,7 +3,7 @@ import hero from "@/assets/hero/hero.jpg";
 import { Button } from "../../ui/button";
 function Hero() {
   return (
-    <div className="bg-destructive/20 ">
+    <div className="bg-destructive/20">
       <div className="grid grid-cols-1 lg:grid-cols-2 justify-between items-center lg:pl-4 container">
         <div className="col-span-1 py-10 lg:py-20 px-4 lg:px-0">
           <h4 className="text-3xl lg:text-4xl font-bold max-w-lg leading-tight">

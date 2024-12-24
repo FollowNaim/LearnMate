@@ -10,13 +10,20 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useAuth } from "@/hooks/useAuth";
+import axios from "axios";
 import toast from "react-hot-toast";
 import { FaGithub, FaGoogle } from "react-icons/fa6";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export default function SignIn() {
-  const { handleLogin, handleGoogleLogin, user, setLoading, loading } =
-    useAuth();
+  const {
+    handleLogin,
+    handleGoogleLogin,
+    user,
+    setLoading,
+    loading,
+    isTokenLoading,
+  } = useAuth();
   const { state } = useLocation();
   const navigate = useNavigate();
   // useEffect(() => {
@@ -38,19 +45,21 @@ export default function SignIn() {
   };
   const handleGoogle = async () => {
     try {
-      toast
-        .promise(handleGoogleLogin(), {
-          loading: "Signin...",
-          success: <b>Signed in successfull !</b>,
-          error: (err) => {
-            return <b>{err.message}</b>;
-          },
-        })
-        .then(() => {
-          console.log(state);
-          navigate(state || "/");
-          setLoading(false);
-        });
+      const res = await toast.promise(handleGoogleLogin(), {
+        loading: "Signin...",
+        success: <b>Signed in successfull !</b>,
+        error: (err) => {
+          return <b>{err.message}</b>;
+        },
+      });
+      await axios.post(
+        "/jwt",
+        { name: res.user.displayName, email: res.user.email },
+        { withCredentials: true }
+      );
+      navigate(state || "/");
+      console.log(state);
+      setLoading(false);
     } catch (err) {
       setLoading(false);
       console.log(err);

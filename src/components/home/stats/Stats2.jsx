@@ -44,14 +44,14 @@ function Stats2() {
     },
   ];
   return (
-    <div className="bg-[#F7F8FC] relative my-10 py-10 font-figtree">
+    <div className="bg-[#F7F8FC]  relative my-10 pt-10 pb-20 font-figtree">
       <div
         className="absolute w-1/2 h-full bg-cover bg-no-repeat top-0 right-0"
         style={{ backgroundImage: `url('${shape2}')` }}
       ></div>
       <div className="container px-6">
         <div className="my-6">
-          <h2 className="text-3xl font-bold">
+          <h2 className="text-3xl font-bold dark:text-black">
             Stats that explain everything <br /> about{" "}
             <span className="text-red-600">#Our success</span>
           </h2>

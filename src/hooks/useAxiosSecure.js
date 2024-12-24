@@ -18,6 +18,7 @@ function useAxiosSecure() {
         console.log("caught on interceptor", err);
         if (err.status === 401 || err.status === 403) {
           handleSignOut();
+          axios.get("/clearjwt");
           navigate("/auth/signin");
         }
       }

@@ -1,9 +1,8 @@
 import { Card, CardHeader } from "@/components/ui/card";
 function SingleStats(props) {
-  console.log(props);
   const { image, title, count } = props.item;
   return (
-    <Card className="">
+    <Card className="dark:bg-transparent dark:text-black">
       <CardHeader className="flex flex-col lg:flex-row gap-6 lg:items-center">
         <div className="bg-destructive/20 p-3 w-fit rounded-full">
           <img className="size-10" src={image} alt="" />

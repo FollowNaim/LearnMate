@@ -7,7 +7,7 @@ function CTA() {
       style={{ backgroundImage: `url('${cta}')` }}
     >
       <div>
-        <h2 className="text-2xl font-semibold">
+        <h2 className="text-2xl font-semibold dark:text-black">
           Looking to tutor with LearnMate?
         </h2>
         <p className="mt-2 text-black/80">

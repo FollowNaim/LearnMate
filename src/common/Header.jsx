@@ -1,4 +1,6 @@
 import defaultUser from "@/assets/header/user.png";
+import Moon from "@/assets/theme/Moon";
+import Sun from "@/assets/theme/Sun";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -9,7 +11,9 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { IconButton } from "@/components/ui/IconButton";
 import { useAuth } from "@/hooks/useAuth";
+import useTheme from "@/hooks/useTheme";
 import { Squash as Hamburger } from "hamburger-react";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
@@ -19,6 +23,7 @@ import { Tooltip } from "react-tooltip";
 function Header() {
   const [isOpen, setOpen] = useState(false);
   const { user, handleSignOut } = useAuth();
+  const { toggleTheme, isDark } = useTheme();
   const { pathname } = useLocation();
   const handleLogout = () => {
     toast.promise(handleSignOut(), {
@@ -68,6 +73,18 @@ function Header() {
           </ul>
         </div>
         <div className="flex items-center gap-2">
+          <div className="pr-2">
+            {!isDark && (
+              <IconButton onClick={() => toggleTheme(!isDark)}>
+                <Sun />
+              </IconButton>
+            )}
+            {isDark && (
+              <IconButton onClick={() => toggleTheme(!isDark)}>
+                <Moon />
+              </IconButton>
+            )}
+          </div>
           {!user && (
             <>
               <Link to={"/auth/signin"}>
@@ -78,11 +95,12 @@ function Header() {
               </Link>
             </>
           )}
+
           {user && (
             <>
               <Tooltip id="name-tooltip" />
-              <div className="flex items-center gap-2">
-                <div className="flex items-center">
+              <div className="flex items-center gap-2 ">
+                <div className="flex items-center pr-2">
                   <DropdownMenu>
                     <DropdownMenuTrigger>
                       <Avatar>
@@ -120,6 +138,7 @@ function Header() {
               </div>
             </>
           )}
+
           <div className="block lg:hidden">
             <Hamburger size={22} toggle={setOpen} toggled={isOpen} />
           </div>
