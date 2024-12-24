@@ -1,6 +1,7 @@
 import check from "@/assets/hero/check.png";
 import hero from "@/assets/hero/hero.jpg";
 import MotionTitle from "@/components/animation/MotionTitle";
+import { Link } from "react-router-dom";
 import { Button } from "../../ui/button";
 function Hero() {
   return (
@@ -33,13 +34,15 @@ function Hero() {
               <span>Trusted by Millions Worldwide</span>
             </p>
           </div>
-          <Button size="lg" className="mt-8">
-            Start Your Journey Today!
-          </Button>
+          <Link to={"/add-tutorials"}>
+            <Button size="lg" className="mt-8">
+              Start Your Journey Today!
+            </Button>
+          </Link>
         </div>
         <div className="col-span-1 order-first lg:order-none h-full w-full">
           <div
-            className="h-96 lg:h-full bg-center w-full bg-cover bg-no-repeat"
+            className="h-72 md:h-96 lg:h-full bg-center w-full bg-cover bg-no-repeat"
             style={{ backgroundImage: `url('${hero}')` }}
           >
             {/* <img className="w-11/12 mx-auto" src={hero} alt="" /> */}

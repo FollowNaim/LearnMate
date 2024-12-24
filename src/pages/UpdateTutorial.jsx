@@ -36,7 +36,6 @@ export default function UpdateTutorial() {
   const navigate = useNavigate();
   const { _id, name, image, description, category, price, review } =
     data?.data || {};
-  console.log(data);
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.target));

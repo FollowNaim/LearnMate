@@ -21,7 +21,6 @@ function Stats2() {
       };
     },
   });
-  console.log(data);
   const stats = [
     {
       title: "Total tutors available for booking and guidance",

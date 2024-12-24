@@ -9,7 +9,6 @@ function ThemeProvider({ children }) {
     saveTheme(isDark);
   }, [isDark]);
   const toggleTheme = (theme) => {
-    console.log("toogle theme", theme);
     if (theme) {
       document.body.classList.add("dark");
       saveTheme(theme);

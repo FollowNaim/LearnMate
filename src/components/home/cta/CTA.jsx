@@ -1,6 +1,7 @@
 import cta from "@/assets/cta/cta.png";
 import MotionTitle from "@/components/animation/MotionTitle";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 function CTA() {
   return (
     <div
@@ -17,9 +18,11 @@ function CTA() {
           Were always looking for talented tutors. Set your own rate, get paid
           and make a difference
         </p>
-        <Button className="mt-6" size="lg">
-          Join Our Tutor Team Today!
-        </Button>
+        <Link to={"/add-tutorials"}>
+          <Button className="mt-6" size="lg">
+            Join Our Tutor Team Today!
+          </Button>
+        </Link>
       </div>
     </div>
   );

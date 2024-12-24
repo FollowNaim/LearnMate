@@ -8,7 +8,6 @@ function Category() {
     queryKey: ["category"],
     queryFn: () => axios.get("/categories"),
   });
-  console.log(data?.data.english);
   return (
     <div className="my-10">
       <div className="container px-4">

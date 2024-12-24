@@ -2,9 +2,10 @@ import img1 from "@/assets/how-works/01.svg";
 import img2 from "@/assets/how-works/02.svg";
 import img3 from "@/assets/how-works/03.svg";
 import img4 from "@/assets/how-works/04.svg";
-import { Button } from "@/components/ui/button";
-import SingleCard from "./SingleCard";
 import MotionTitle from "@/components/animation/MotionTitle";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import SingleCard from "./SingleCard";
 function HowItWorks() {
   return (
     <div className="my-10 px-4 ">
@@ -75,7 +76,9 @@ function HowItWorks() {
           />
         </div>
         <div className="flex justify-center items-center mt-6">
-          <Button size="lg">Join LearnMate now!</Button>
+          <Link to={"/add-tutorials"}>
+            <Button size="lg">Join LearnMate now!</Button>
+          </Link>
         </div>
       </div>
     </div>

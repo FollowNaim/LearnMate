@@ -28,7 +28,7 @@ export default function SignUp() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { name, email, photo } = Object.fromEntries(new FormData(e.target));
-    console.log(name);
+
     toast
       .promise(handleSignup(email, pass), {
         loading: "Signin up...",

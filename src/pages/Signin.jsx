@@ -79,7 +79,6 @@ export default function SignIn() {
         console.log(err);
         setLoading(false);
       });
-    console.log(state);
   };
 
   return (
