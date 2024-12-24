@@ -1,4 +1,5 @@
 import cta from "@/assets/cta/cta.png";
+import MotionTitle from "@/components/animation/MotionTitle";
 import { Button } from "@/components/ui/button";
 function CTA() {
   return (
@@ -7,9 +8,11 @@ function CTA() {
       style={{ backgroundImage: `url('${cta}')` }}
     >
       <div>
-        <h2 className="text-2xl font-semibold dark:text-black">
-          Looking to tutor with LearnMate?
-        </h2>
+        <MotionTitle>
+          <h2 className="text-2xl font-semibold dark:text-black">
+            Looking to tutor with LearnMate?
+          </h2>
+        </MotionTitle>
         <p className="mt-2 text-black/80">
           Were always looking for talented tutors. Set your own rate, get paid
           and make a difference

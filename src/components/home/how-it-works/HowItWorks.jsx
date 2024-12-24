@@ -4,6 +4,7 @@ import img3 from "@/assets/how-works/03.svg";
 import img4 from "@/assets/how-works/04.svg";
 import { Button } from "@/components/ui/button";
 import SingleCard from "./SingleCard";
+import MotionTitle from "@/components/animation/MotionTitle";
 function HowItWorks() {
   return (
     <div className="my-10 px-4 ">
@@ -12,9 +13,11 @@ function HowItWorks() {
        border rounded-md relative before:absolute before:-right-20 before:top-0 before:w-1/3 before:-skew-x-12 before:h-full before:bg-red-100/40 before:blur-xl before:z-10 dark:before:bg-red-500/10 "
       >
         <div className="mb-6">
-          <h2 className="text-3xl font-bold">
-            How Learn Mate <span className="text-red-600">Works ?</span>
-          </h2>
+          <MotionTitle>
+            <h2 className="text-3xl font-bold">
+              How Learn Mate <span className="text-red-600">Works ?</span>
+            </h2>
+          </MotionTitle>
           <p className="text-muted-foreground mt-3">
             Seamlessly connect with the perfect tutor in just a few simple
             steps.

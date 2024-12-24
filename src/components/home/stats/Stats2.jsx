@@ -3,6 +3,7 @@ import img2 from "@/assets/stats/02.png";
 import img3 from "@/assets/stats/03.png";
 import img4 from "@/assets/stats/04.png";
 import shape2 from "@/assets/stats/shape-02.png";
+import MotionTitle from "@/components/animation/MotionTitle";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import SingleStats from "./SingleStats";
@@ -51,10 +52,12 @@ function Stats2() {
       ></div>
       <div className="container px-6">
         <div className="my-6">
-          <h2 className="text-3xl font-bold dark:text-black">
-            Stats that explain everything <br /> about{" "}
-            <span className="text-red-600">#Our success</span>
-          </h2>
+          <MotionTitle>
+            <h2 className="text-3xl font-bold dark:text-black">
+              Stats that explain everything <br /> about{" "}
+              <span className="text-red-600">#Our success</span>
+            </h2>
+          </MotionTitle>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 z-50 relative">
           {stats.map((item, i) => {

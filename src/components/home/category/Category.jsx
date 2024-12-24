@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import CategoryCard from "./CategoryCard";
+import MotionTitle from "@/components/animation/MotionTitle";
 
 function Category() {
   const { data } = useQuery({
@@ -12,9 +13,12 @@ function Category() {
     <div className="my-10">
       <div className="container px-4">
         <div className=" mb-10">
-          <h2 className="text-center text-3xl font-semibold">
-            Explore Our <span className="text-red-600">Expert Categories</span>
-          </h2>
+          <MotionTitle>
+            <h2 className="text-center text-3xl font-semibold">
+              Explore Our{" "}
+              <span className="text-red-600">Expert Categories</span>
+            </h2>
+          </MotionTitle>
           <p className="text-center mx-auto max-w-lg mt-4 text-muted-foreground">
             Find the perfect category for your learning goals.
           </p>

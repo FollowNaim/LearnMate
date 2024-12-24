@@ -1,3 +1,4 @@
+import MotionTitle from "@/components/animation/MotionTitle";
 import Marquee from "@/components/ui/scroller";
 import { cn } from "@/lib/utils";
 
@@ -73,9 +74,11 @@ export function MarqueeDemo() {
     <div>
       <div className="relative flex py-10 w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background">
         <div className="mb-6 text-center">
-          <h2 className="text-3xl font-bold">
-            What Our <span className="text-red-600"> Users Say</span>
-          </h2>
+          <MotionTitle>
+            <h2 className="text-3xl font-bold">
+              What Our <span className="text-red-600"> Users Say</span>
+            </h2>
+          </MotionTitle>
           <p className="text-muted-foreground mt-3">
             Real Experiences from Learners and Tutors
           </p>
