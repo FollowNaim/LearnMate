@@ -1,4 +1,4 @@
-import fillAnimation from "@/assets/animation/addtutorials.json";
+import fillAnimation from "@/assets/animation/update.json";
 import { Button } from "@/components/ui/button";
 import {
   Card,

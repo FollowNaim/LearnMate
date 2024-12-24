@@ -1,4 +1,4 @@
-import photo1 from "@/assets/login/photo1.webp";
+import photo1 from "@/assets/login/photo1.jpg";
 import Seo from "@/components/seo/Seo";
 import { Button } from "@/components/ui/button";
 import {
