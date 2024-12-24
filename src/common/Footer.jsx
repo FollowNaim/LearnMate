@@ -44,48 +44,48 @@ function Footer() {
                 </li>
               </Link>
 
-              <Link to={"/auth/signin"}>
+              <Link to={"/find-tutors"}>
                 <li className="hover:text-primary cursor-pointer hover:underline w-fit">
-                  Shop
+                  Find Tutors
                 </li>
               </Link>
-              <Link to={"/auth/signin"}>
+              <Link to={"/my-tutorials"}>
                 <li className="hover:text-primary cursor-pointer hover:underline w-fit">
-                  About Us
+                  My Tutorials
                 </li>
               </Link>
-              <Link to={"/auth/signin"}>
+              <Link to={"/my-tutors"}>
                 <li className="hover:text-primary cursor-pointer hover:underline w-fit">
-                  Contact Us
+                  My Booked Tutors
                 </li>
               </Link>
             </ul>
           </div>
         </div>
         <div className="lg:col-span-2">
-          <h4>Customer Support</h4>
+          <h4>Student Support</h4>
           <div className="mt-4 text-muted-foreground/70">
             <ul className="flex flex-col gap-2">
-              <Link to={"/auth/signin"}>
+              <a target="_blank" href="https://github.com/follownaim">
                 <li className="hover:text-primary cursor-pointer hover:underline w-fit">
-                  FAQ
+                  Contact Us
                 </li>
-              </Link>
-              <Link to={"/auth/signin"}>
+              </a>
+              <a target="_blank" href="https://github.com/follownaim">
                 <li className="hover:text-primary cursor-pointer hover:underline w-fit">
-                  Shipping & Delivery
+                  Learning Resources
                 </li>
-              </Link>
-              <Link to={"/auth/signin"}>
+              </a>
+              <a target="_blank" href="https://github.com/follownaim">
                 <li className="hover:text-primary cursor-pointer hover:underline w-fit">
-                  Track Your Order
+                  Payment Support
                 </li>
-              </Link>
-              <Link to={"/auth/signin"}>
+              </a>
+              <a target="_blank" href="https://github.com/follownaim">
                 <li className="hover:text-primary cursor-pointer hover:underline w-fit">
-                  Returns & Refunds
+                  Feedback & Suggestions
                 </li>
-              </Link>
+              </a>
             </ul>
           </div>
         </div>
@@ -119,20 +119,56 @@ function Footer() {
         <div className="lg:col-span-3">
           <h4>Our Instagram</h4>
           <div className="grid grid-cols-3 gap-3 mt-6">
-            {/* <img className="rounded-xl" src={footer1} alt="" />
-            <img className="rounded-xl" src={footer2} alt="" />
-            <img className="rounded-xl" src={footer3} alt="" /> */}
+            <img
+              className="rounded-xl h-16 w-full object-cover"
+              src={
+                "https://a-us.storyblok.com/f/1015657/2250x1500/3dd479b4bb/privatetutorsbacktoschool.webp"
+              }
+              alt=""
+            />
+            <img
+              className="rounded-xl h-16 w-full object-cover"
+              src={
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRR7vmmR0_w4XJVRxPnMJ-QiBKZcEi3fU5XRI54KgFXvbCeZbnrBg65zBs4rWQfZjtM_hY&usqp=CAU"
+              }
+              alt=""
+            />
+            <img
+              className="rounded-xl h-16 w-full object-cover"
+              src={
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwZv1ipnqPoPL2aiGVP3AB4cmUJzCB1w3dUa2toEg6UPG1Wl-t2QS7bI0_hZI-_3Zr3nE&usqp=CAU"
+              }
+              alt=""
+            />
           </div>
           <div className="grid grid-cols-3 gap-3 mt-3">
-            {/* <img className="rounded-xl" src={footer4} alt="" />
-            <img className="rounded-xl" src={footer5} alt="" />
-            <img className="rounded-xl" src={footer6} alt="" /> */}
+            <img
+              className="rounded-xl h-16 w-full object-cover"
+              src={
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNUCY2dMqDc9iXqfg-FAa8FI3OqSFoIIxe1A&s"
+              }
+              alt=""
+            />
+            <img
+              className="rounded-xl h-16 w-full object-cover"
+              src={
+                "https://img.freepik.com/free-photo/indoor-shot-positive-friendly-classmates-work-together-clever-unrecognizable-girl-helps-asian-guy-with-exam-preparation_273609-44828.jpg"
+              }
+              alt=""
+            />
+            <img
+              className="rounded-xl h-16 w-full object-cover"
+              src={
+                "https://img.freepik.com/free-photo/teacher-class-explaining-lesson-student_23-2148665951.jpg"
+              }
+              alt=""
+            />
           </div>
         </div>
       </div>
       <div className="border-t border-border py-4 text-center">
         <div className="container mx-auto px-4 flex flex-col-reverse lg:flex-row gap-5 lg:gap-0 justify-between items-center">
-          <p>Gear Arena © 2024 Developed by Naim</p>
+          <p>Learn Mate © 2024 Developed by Naim</p>
           <div className="flex items-center gap-4">
             <a href="https://facebook.com">
               <FaFacebook className="hover:text-black" size={22} color="blue" />
