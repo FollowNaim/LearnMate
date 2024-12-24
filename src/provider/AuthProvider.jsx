@@ -41,6 +41,7 @@ function AuthProvider({ children }) {
   useEffect(() => {
     // today is 12-24-24 01:10:AM
     // i was create onAuthStateChanged inside a callback funciton on unsubscribe and it was on development working fine. but on production user reg login etc nothing working and there was no error on console. it was make me mad. spend 1hr+ to find the bug . literally i was thinking something ghost 😂😂 bcz there was no error on console and on development was working fine. and finally i fount thing diamond . ahhh!
+    // literally ঘুম হারাম হয়ে গেছিলো 😅
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       console.log("currentUser", currentUser);
       if (currentUser?.email) {

@@ -43,7 +43,8 @@ function AllTutors() {
       .then((res) => {
         setData(res.data);
         setLoading(false);
-      });
+      })
+      .catch(() => setLoading(false));
   }, [search, categories, category]);
   // useEffect(() => {
   //   setLoading(true);
@@ -98,7 +99,19 @@ function AllTutors() {
               </div>
             </div>
           </div>
-          <div>
+          <div className="block lg:hidden">
+            {/* <Button
+              className=""
+              onClick={() => {
+                setCategories("");
+                setSearch("");
+                navigate("/find-tutors");
+              }}
+            >
+              Reset
+            </Button> */}
+          </div>
+          <div className="ml-auto lg:ml-0">
             <Button
               className=""
               onClick={() => {

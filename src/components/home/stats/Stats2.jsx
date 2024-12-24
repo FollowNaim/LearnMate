@@ -53,7 +53,7 @@ function Stats2() {
         <div className="my-6">
           <h2 className="text-3xl font-bold">
             Stats that explain everything <br /> about{" "}
-            <span className="text-blue-600">#Our success</span>
+            <span className="text-red-600">#Our success</span>
           </h2>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 z-50 relative">

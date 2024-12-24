@@ -10,7 +10,7 @@ function SingleStats(props) {
         </div>
         <div className="flex flex-col">
           <h5 className="text-lg font-semibold">{count}</h5>
-          <p className="text-muted-foreground">{title}</p>
+          <p className="text-muted-foreground mt-4 lg:mt-0">{title}</p>
         </div>
       </CardHeader>
     </Card>

@@ -41,13 +41,11 @@ function MyBooksList() {
       error: <b>Could not added.</b>,
     });
   };
-  console.log(data);
   if (isLoading || loading) return <Spinner />;
   if (isError) {
     queryClient.invalidateQueries({ queryKey: ["my-bookings"] });
     return <p>Something went wrong</p>;
   }
-  console.log(data);
   return (
     <div className="mb-10 mt-2">
       <div className="container px-4">
