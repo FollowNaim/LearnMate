@@ -31,6 +31,7 @@ function Header() {
       success: <b>Logout Successfull!</b>,
       error: <b>Could not save.</b>,
     });
+    setOpen(false);
   };
   useEffect(() => {
     setOpen(false);
@@ -46,7 +47,7 @@ function Header() {
         <div className="">
           <ul
             id="navlinks"
-            className={`flex flex-col absolute w-full lg:w-fit bg-white/30 backdrop-blur-lg lg:bg-transparent top-0 left-0 z-10 ${
+            className={`flex flex-col absolute w-full lg:w-fit bg-white/30 dark:bg-black/30 backdrop-blur-lg lg:bg-transparent top-0 left-0 z-10 ${
               isOpen
                 ? "translate-y-[65px] duration-300 ease-in-out py-8"
                 : "-translate-y-full lg:-translate-y-0"
@@ -67,9 +68,23 @@ function Header() {
             <Link to={"/my-tutors"}>
               <li>My booked tutors</li>
             </Link>
-            <Button onClick={handleLogout} className="block lg:hidden">
-              Sign Out
-            </Button>
+            {!user && (
+              <div className="flex flex-col md:hidden gap-2">
+                <Link to={"/auth/signin"}>
+                  <Button className="w-full" variant="ghost">
+                    Login
+                  </Button>
+                </Link>
+                <Link to={"/auth/signup"}>
+                  <Button className="">Register</Button>
+                </Link>
+              </div>
+            )}
+            {user && (
+              <Button onClick={handleLogout} className="block lg:hidden">
+                Sign Out
+              </Button>
+            )}
           </ul>
         </div>
         <div className="flex items-center gap-2">
@@ -86,14 +101,14 @@ function Header() {
             )}
           </div>
           {!user && (
-            <>
+            <div className="hidden md:block">
               <Link to={"/auth/signin"}>
                 <Button variant="ghost">Login</Button>
               </Link>
               <Link to={"/auth/signup"}>
                 <Button className="">Register</Button>
               </Link>
-            </>
+            </div>
           )}
 
           {user && (

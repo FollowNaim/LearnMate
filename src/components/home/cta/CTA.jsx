@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 function CTA() {
   return (
     <div
-      className="bg-cover bg-no-repeat flex flex-col justify-center items-center py-10 my-10"
+      className="bg-cover bg-no-repeat flex flex-col justify-center items-center py-10 my-10 px-4"
       style={{ backgroundImage: `url('${cta}')` }}
     >
       <div>
