@@ -1,4 +1,5 @@
 import photo1 from "@/assets/login/photo2.jpg";
+import Seo from "@/components/seo/Seo";
 import Validation from "@/components/signup/PassValidation";
 import { Button } from "@/components/ui/button";
 import {
@@ -49,6 +50,9 @@ export default function SignUp() {
   };
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 justify-center items-center w-full max-w-7xl mx-auto px-4 lg:pl-0 lg:pr-4">
+      <Seo
+        title={"Join Learn Mate | Sign Up to Unlock Your Learning Potential"}
+      />
       <div
         className="col-span-1 bg-cover bg-right bg-no-repeat w-full h-full hidden lg:block"
         style={{ backgroundImage: `url('${photo1}')` }}

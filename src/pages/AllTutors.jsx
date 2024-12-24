@@ -1,5 +1,6 @@
 import Tutor from "@/components/all-tutors/Tutor";
 import Spinner from "@/components/loader/Spinner";
+import Seo from "@/components/seo/Seo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -56,6 +57,7 @@ function AllTutors() {
   if (loading) return <Spinner />;
   return (
     <div className="my-10">
+      <Seo title={"Find Top-Rated Tutors | Learn Mate Tutors Directory"} />
       <div className="container px-4">
         <div className="grid max-w-xl mx-auto grid-cols-2 lg:grid-cols-3 justify-center items-center gap-6 mb-6">
           <div className="relative">

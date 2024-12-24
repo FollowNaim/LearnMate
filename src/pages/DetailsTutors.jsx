@@ -1,4 +1,5 @@
 import Spinner from "@/components/loader/Spinner";
+import Seo from "@/components/seo/Seo";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -48,6 +49,7 @@ function DetailsTutors() {
   if (isLoading) return <Spinner />;
   return (
     <div className="my-10 font-figtree">
+      <Seo title={"Tutor Profile | Personalized Lessons with Learn Mate"} />
       <div className="container px-4 grid grid-cols-1 lg:grid-cols-12">
         <div className="col-span-9">
           <Card className="rounded-b-none lg:rounded-r-none">

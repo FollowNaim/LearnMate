@@ -65,9 +65,9 @@ function Header() {
             <NavLink to={"/my-tutorials"}>
               <li>My Tutorials</li>
             </NavLink>
-            <Link to={"/my-tutors"}>
+            <NavLink to={"/my-tutors"}>
               <li>My booked tutors</li>
-            </Link>
+            </NavLink>
             {!user && (
               <div className="flex flex-col md:hidden gap-2">
                 <Link to={"/auth/signin"}>

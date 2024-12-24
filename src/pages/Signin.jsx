@@ -1,4 +1,5 @@
 import photo1 from "@/assets/login/photo1.webp";
+import Seo from "@/components/seo/Seo";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -11,6 +12,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useAuth } from "@/hooks/useAuth";
 import axios from "axios";
+import { useEffect } from "react";
 import toast from "react-hot-toast";
 import { FaGithub, FaGoogle } from "react-icons/fa6";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -26,9 +28,9 @@ export default function SignIn() {
   } = useAuth();
   const { state } = useLocation();
   const navigate = useNavigate();
-  // useEffect(() => {
-  //   if (user) navigate("/");
-  // }, []);
+  useEffect(() => {
+    if (user) navigate("/");
+  }, [user]);
   const handleSubmit = (e) => {
     e.preventDefault();
     const { email, password } = Object.fromEntries(new FormData(e.target));
@@ -68,6 +70,7 @@ export default function SignIn() {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 justify-center max-w-7xl mx-auto px-4 lg:pl-0 lg:pr-4 items-center">
+      <Seo title={"Login to Your Account | Learn Mate"} />
       <div
         className="w-full h-full mx-auto col-span-1 hidden lg:block bg-cover bg-no-repeat bg-top"
         style={{ backgroundImage: `url('${photo1}')` }}

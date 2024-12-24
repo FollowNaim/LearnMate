@@ -1,4 +1,5 @@
 import error404 from "@/assets/animation/404.json";
+import Seo from "@/components/seo/Seo";
 import { Button } from "@/components/ui/button";
 import Lottie from "lottie-react";
 import { Link } from "react-router-dom";
@@ -6,6 +7,7 @@ import { Link } from "react-router-dom";
 function Error404() {
   return (
     <div className="container mx-auto flex flex-col min-h-screen justify-center items-center text-center">
+      <Seo title={"Page Not Found | Learn Mate"} />
       <div className="w-72 h-72">
         <Lottie
           width={300}
