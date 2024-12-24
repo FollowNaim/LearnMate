@@ -32,6 +32,7 @@ export default function SignIn() {
     if (user) navigate("/");
   }, [user]);
   const handleSubmit = (e) => {
+    setLoading(true);
     e.preventDefault();
     const { email, password } = Object.fromEntries(new FormData(e.target));
     toast
@@ -42,30 +43,43 @@ export default function SignIn() {
           return <b>{err.message}</b>;
         },
       })
-      .then(() => navigate(state || "/"))
+      .then(() => {
+        navigate(state || "/");
+        setLoading(false);
+      })
       .catch((err) => console.log(err));
   };
-  const handleGoogle = async () => {
-    try {
-      const res = await toast.promise(handleGoogleLogin(), {
+  const handleGoogle = () => {
+    setLoading(true);
+    toast
+      .promise(handleGoogleLogin(), {
         loading: "Signin...",
         success: <b>Signed in successfull !</b>,
         error: (err) => {
           return <b>{err.message}</b>;
         },
+      })
+      .then((res) => {
+        axios
+          .post(
+            "/jwt",
+            { name: res.user.displayName, email: res.user.email },
+            { withCredentials: true }
+          )
+          .then(() => {
+            navigate(state || "/");
+            setLoading(false);
+          })
+          .catch((err) => {
+            console.log(err);
+            setLoading(false);
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
       });
-      await axios.post(
-        "/jwt",
-        { name: res.user.displayName, email: res.user.email },
-        { withCredentials: true }
-      );
-      navigate(state || "/");
-      console.log(state);
-      setLoading(false);
-    } catch (err) {
-      setLoading(false);
-      console.log(err);
-    }
+    console.log(state);
   };
 
   return (

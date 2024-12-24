@@ -1,4 +1,5 @@
-import { GiGraduateCap } from "react-icons/gi";
+import { BiSolidBadgeDollar } from "react-icons/bi";
+import { GiDrippingStar, GiGraduateCap } from "react-icons/gi";
 import { MdOutlineTranslate } from "react-icons/md";
 import { PiStudent } from "react-icons/pi";
 import { Link } from "react-router-dom";
@@ -91,12 +92,24 @@ function Tutor(props) {
                   <span>{bookings} active students</span>
                 </p>
 
-                <p className="flex items-center gap-3">
+                {/* <p className="flex items-center gap-3">
                   <MdOutlineTranslate color="#000" size={18} />
                   <span className="">
                     Speaks English (Native), German (Native)
                   </span>
-                </p>
+                </p> */}
+                <div className="flex flex-col gap-3">
+                  <div className="flex items-center gap-2">
+                    <GiDrippingStar color="#000" size={18} />
+                    <p>Review:</p>
+                    <h2 className="">{review}</h2>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <BiSolidBadgeDollar color="#000" size={18} />
+                    <p>Price:</p>
+                    <h2 className="">$ {price}</h2>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -104,18 +117,36 @@ function Tutor(props) {
       </CardContent>
       <CardContent className="flex flex-col justify-between h-full lg:p-6 lg:ml-auto">
         <div className="flex items-center gap-4 ">
-          <p className="flex flex-col gap-1 ">
-            <p className="flex items-center gap-2">
-              <span className="text-muted-foreground">Review </span>
-              {review}
-            </p>
-          </p>
-          -
-          <p className="">
-            <p className="flex items-center gap-2">
-              <span className="text-muted-foreground">$</span>
-              <span className="font-medium">{price}</span>
-            </p>
+          <p className="flex items-center gap-3">
+            <MdOutlineTranslate color="#000" size={18} />
+            <img
+              className="w-6"
+              src={`https://purecatamphetamine.github.io/country-flag-icons/3x2/${
+                category === "bangla"
+                  ? "BD"
+                  : category === "english"
+                  ? "US"
+                  : category === "arabic"
+                  ? "SA"
+                  : category === "italian"
+                  ? "IT"
+                  : category === "french"
+                  ? "FR"
+                  : category === "spanish"
+                  ? "ES"
+                  : category === "chinese"
+                  ? "CN"
+                  : category === "germen"
+                  ? "DE"
+                  : category === "japanese"
+                  ? "JP"
+                  : "US"
+              }.svg`}
+              alt=""
+            />
+            <span className="">
+              {category?.charAt(0).toUpperCase() + category?.slice(1)}
+            </span>
           </p>
         </div>
         <div className="mt-6 flex flex-col gap-3">

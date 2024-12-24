@@ -50,7 +50,7 @@ function Header() {
             className={`flex flex-col absolute w-full lg:w-fit bg-white/30 dark:bg-black/30 backdrop-blur-lg lg:bg-transparent top-0 left-0 z-10 ${
               isOpen
                 ? "translate-y-[65px] duration-300 ease-in-out py-8"
-                : "-translate-y-full lg:-translate-y-0"
+                : "-translate-y-full lg:translate-y-0"
             } lg:static lg:flex-row items-center gap-4`}
           >
             <NavLink to={"/"}>
@@ -127,7 +127,12 @@ function Header() {
                           src={user?.photoURL || defaultUser}
                           alt={user?.displayName}
                         />
-                        <AvatarFallback>N</AvatarFallback>
+                        {/* <AvatarFallback
+                          data-tooltip-id="name-tooltip"
+                          data-tooltip-content={user.displayName || "N/A"}
+                        >
+                          N
+                        </AvatarFallback> */}
                       </Avatar>
                       {/* <img
                         className="object-cover size-10 rounded-full"

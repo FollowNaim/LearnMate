@@ -21,7 +21,7 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { useAuth } from "@/hooks/useAuth";
-import axios from "axios";
+import useAxiosSecure from "@/hooks/useAxiosSecure";
 import Lottie from "lottie-react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -29,6 +29,7 @@ import { useNavigate } from "react-router-dom";
 export default function AddTutorials() {
   const { user } = useAuth();
   const navigate = useNavigate();
+  const axiosSecure = useAxiosSecure();
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.target));
@@ -37,7 +38,7 @@ export default function AddTutorials() {
     data.review = 0;
     data.bookings = 0;
     toast
-      .promise(axios.post("/tutors", data), {
+      .promise(axiosSecure.post("/tutors", data), {
         loading: "Adding...",
         success: <b>Added successfull !</b>,
         error: (err) => {

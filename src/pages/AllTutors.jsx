@@ -1,5 +1,6 @@
 import Tutor from "@/components/all-tutors/Tutor";
 import Spinner from "@/components/loader/Spinner";
+import NotFound from "@/components/no-data-found/NotFound";
 import Seo from "@/components/seo/Seo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -126,10 +127,16 @@ function AllTutors() {
             </Button>
           </div>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 my-10">
-          {!data.length
-            ? "No data found!"
-            : data?.map((tutor) => <Tutor tutor={tutor} key={tutor._id} />)}
+        <div>
+          {!data.length ? (
+            <NotFound />
+          ) : (
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 my-10">
+              {data?.map((tutor) => (
+                <Tutor tutor={tutor} key={tutor._id} />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>

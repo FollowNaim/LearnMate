@@ -2,6 +2,7 @@ import { auth } from "@/firebase/firebase.config";
 import axios from "axios";
 import {
   createUserWithEmailAndPassword,
+  GithubAuthProvider,
   GoogleAuthProvider,
   onAuthStateChanged,
   signInWithEmailAndPassword,
@@ -17,6 +18,7 @@ function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
   const [isTokenLoading, setIsTokenLoading] = useState(true);
   const googleProvider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
   const handleLogin = (email, pass) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, pass);
@@ -24,6 +26,10 @@ function AuthProvider({ children }) {
   const handleGoogleLogin = () => {
     setLoading(true);
     return signInWithPopup(auth, googleProvider);
+  };
+  const handleGithubLogin = () => {
+    setLoading(true);
+    return signInWithPopup(auth, githubProvider);
   };
   const handleSignup = (email, pass) => {
     setLoading(true);
@@ -84,6 +90,7 @@ function AuthProvider({ children }) {
     setLoading,
     isTokenLoading,
     handleGoogleLogin,
+    handleGithubLogin,
     handleLogin,
     handleSignup,
     updateInfo,
