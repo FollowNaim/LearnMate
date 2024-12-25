@@ -37,7 +37,7 @@ function MyTutorials() {
   const mutation = useMutation({
     mutationFn: (id) =>
       axiosSecure.delete(`/tutors/${id}`, { email: user?.email }),
-    onSuccess: () => queryClient.invalidateQueries(["my-bookings"]),
+    onSuccess: () => queryClient.invalidateQueries(["my-bookings", "tutors"]),
   });
   const handleDelete = (id) => {
     Swal.fire({

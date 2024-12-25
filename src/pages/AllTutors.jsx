@@ -1,5 +1,4 @@
 import Tutor from "@/components/all-tutors/Tutor";
-import Spinner from "@/components/loader/Spinner";
 import NotFound from "@/components/no-data-found/NotFound";
 import Seo from "@/components/seo/Seo";
 import { Button } from "@/components/ui/button";
@@ -11,8 +10,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { IoIosSearch } from "react-icons/io";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -20,34 +20,31 @@ function AllTutors() {
   const [search, setSearch] = useState("");
   const [categories, setCategories] = useState("");
   const { category } = useParams();
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  // const [myData, setMyData] = useState([]);
-  // const { data, isLoading } = useQuery({
-  //   queryKey: ["tutors"],
-  //   queryFn: async () => {
-  //     const res = await axios.get(`/tutors?category=${category}`);
-  //     setMyData(res.data);
-  //     console.log(res);
-  //     return res;
-  //   },
-  // });
+  const { data } = useQuery({
+    queryKey: ["tutors", { categories, category, search }],
+    queryFn: async () => {
+      const res = await axios.get(
+        `/tutors?category=${categories || category || ""}&search=${search}`
+      );
+      return res;
+    },
+  });
   // useEffect(() => {
   //   axios.get(`/tutors?search=${search}`).then((res) => setMyData(res.data));
   // }, [search]);
   // console.log(myData);
   // if (isLoading) return <Spinner />;
   // if (!data.data.length) return <p>No data found!</p>;
-  useEffect(() => {
-    axios
-      .get(`/tutors?category=${categories || category || ""}&search=${search}`)
-      .then((res) => {
-        setData(res.data);
-        setLoading(false);
-      })
-      .catch(() => setLoading(false));
-  }, [search, categories, category]);
+  // useEffect(() => {
+  //   axios
+  //     .get(`/tutors?category=${categories || category || ""}&search=${search}`)
+  //     .then((res) => {
+  //       setData(res.data);
+  //       setLoading(false);
+  //     })
+  //     .catch(() => setLoading(false));
+  // }, [search, categories, category]);
   // useEffect(() => {
   //   setLoading(true);
   //   axios.get(`/tutors?category=${category || ""}`).then((res) => {
@@ -55,7 +52,7 @@ function AllTutors() {
   //     setLoading(false);
   //   });
   // }, [category]);
-  if (loading) return <Spinner />;
+  // if (isLoading) return <Spinner />;
   return (
     <div className="my-10">
       <Seo title={"Find Top-Rated Tutors | Learn Mate Tutors Directory"} />
@@ -128,11 +125,11 @@ function AllTutors() {
           </div>
         </div>
         <div>
-          {!data.length ? (
+          {!data?.data.length ? (
             <NotFound />
           ) : (
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 my-10">
-              {data?.map((tutor) => (
+              {data?.data?.map((tutor) => (
                 <Tutor tutor={tutor} key={tutor._id} />
               ))}
             </div>
