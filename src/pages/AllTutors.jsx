@@ -1,4 +1,5 @@
 import Tutor from "@/components/all-tutors/Tutor";
+import Spinner from "@/components/loader/Spinner";
 import NotFound from "@/components/no-data-found/NotFound";
 import Seo from "@/components/seo/Seo";
 import { Button } from "@/components/ui/button";
@@ -21,7 +22,7 @@ function AllTutors() {
   const [categories, setCategories] = useState("");
   const { category } = useParams();
   const navigate = useNavigate();
-  const { data } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["tutors", { categories, category, search }],
     queryFn: async () => {
       const res = await axios.get(
@@ -52,7 +53,7 @@ function AllTutors() {
   //     setLoading(false);
   //   });
   // }, [category]);
-  // if (isLoading) return <Spinner />;
+  // if (isLoading && !search) return <Spinner />;
   return (
     <div className="my-10">
       <Seo title={"Find Top-Rated Tutors | Learn Mate Tutors Directory"} />
@@ -125,6 +126,7 @@ function AllTutors() {
           </div>
         </div>
         <div>
+          {isLoading ? <Spinner /> : ""}
           {!data?.data.length ? (
             <NotFound />
           ) : (
