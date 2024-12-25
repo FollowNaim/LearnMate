@@ -1,3 +1,4 @@
+import useTheme from "@/hooks/useTheme";
 import { BiSolidBadgeDollar } from "react-icons/bi";
 import { GiDrippingStar, GiGraduateCap } from "react-icons/gi";
 import { MdOutlineTranslate } from "react-icons/md";
@@ -8,6 +9,7 @@ import { Card, CardContent, CardDescription, CardHeader } from "../ui/card";
 function Tutor(props) {
   const { _id, name, bookings, image, price, category, description, review } =
     props.tutor;
+  const { isDark } = useTheme();
   return (
     // <div>
     //   <div className="border rounded-md flex gap-4 items-center p-4">
@@ -74,7 +76,9 @@ function Tutor(props) {
       <CardContent className="lg:p-6 lg:pl-2">
         <CardDescription>
           <div>
-            <h2 className="text-xl font-semibold text-black">{name}</h2>{" "}
+            <h2 className="text-xl font-semibold text-black dark:text-white">
+              {name}
+            </h2>{" "}
             <div className="mt-2">
               {/* <p className="bg-destructive/20 px-1 rounded-md w-fit text-black/70">
                 Super Tutor
@@ -82,13 +86,16 @@ function Tutor(props) {
 
               <div className=" mt-4 flex flex-col gap-2">
                 <p className="flex items-center gap-3">
-                  <GiGraduateCap color="#000" size={18} />{" "}
+                  <GiGraduateCap
+                    className="text-black dark:text-white"
+                    size={18}
+                  />{" "}
                   <span>
                     {category.charAt(0).toUpperCase() + category.slice(1)}
                   </span>
                 </p>
                 <p className="flex items-center gap-3">
-                  <PiStudent color="#000" size={18} />
+                  <PiStudent className="text-black dark:text-white" size={18} />
                   <span>{bookings} active students</span>
                 </p>
 
@@ -100,12 +107,18 @@ function Tutor(props) {
                 </p> */}
                 <div className="flex flex-col gap-3">
                   <div className="flex items-center gap-2">
-                    <GiDrippingStar color="#000" size={18} />
+                    <GiDrippingStar
+                      className="text-black dark:text-white"
+                      size={18}
+                    />
                     <p>Review:</p>
                     <h2 className="">{review}</h2>
                   </div>
                   <div className="flex items-center gap-2">
-                    <BiSolidBadgeDollar color="#000" size={18} />
+                    <BiSolidBadgeDollar
+                      className="text-black dark:text-white"
+                      size={18}
+                    />
                     <p>Price:</p>
                     <h2 className="">$ {price}</h2>
                   </div>
@@ -118,7 +131,10 @@ function Tutor(props) {
       <CardContent className="flex flex-col justify-between h-full lg:p-6 lg:ml-auto">
         <div className="flex items-center gap-4 ">
           <p className="flex items-center gap-3">
-            <MdOutlineTranslate color="#000" size={18} />
+            <MdOutlineTranslate
+              className="text-black dark:text-white"
+              size={18}
+            />
             <img
               className="w-6"
               src={`https://purecatamphetamine.github.io/country-flag-icons/3x2/${
@@ -144,7 +160,7 @@ function Tutor(props) {
               }.svg`}
               alt=""
             />
-            <span className="">
+            <span className="text-black dark:text-white">
               {category?.charAt(0).toUpperCase() + category?.slice(1)}
             </span>
           </p>

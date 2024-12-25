@@ -16,7 +16,6 @@ export const AuthContext = createContext(null);
 function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [isTokenLoading, setIsTokenLoading] = useState(true);
   const googleProvider = new GoogleAuthProvider();
   const githubProvider = new GithubAuthProvider();
   const handleLogin = (email, pass) => {
@@ -57,23 +56,21 @@ function AuthProvider({ children }) {
           name: currentUser.displayName,
           email: currentUser.email,
         };
-        axios.post("/user", user);
-        setIsTokenLoading(true);
-        const { data } = axios
+        axios
           .post(
             "/jwt",
             { name: currentUser.displayName, email: currentUser.email },
             { withCredentials: true }
           )
-          .then(() => {
+          .then((res) => {
+            console.log("jwt", res);
             setUser(currentUser);
             setLoading(false);
-            setIsTokenLoading(false);
           });
+        axios.post("/user", user).catch((err) => console.log(err));
       } else {
         setUser(currentUser);
         setLoading(false);
-        setIsTokenLoading(false);
         axios
           .get("/clearjwt", { withCredentials: true })
           .then((res) => console.log(res));
@@ -86,7 +83,6 @@ function AuthProvider({ children }) {
     user,
     loading,
     setLoading,
-    isTokenLoading,
     handleGoogleLogin,
     handleGithubLogin,
     handleLogin,

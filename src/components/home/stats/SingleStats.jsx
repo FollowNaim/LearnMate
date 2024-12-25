@@ -9,7 +9,7 @@ function SingleStats(props) {
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
     >
-      <Card className="dark:bg-transparent shadow-sm hover:border hover:border-red-600 hover:duration-300 hover:ease-in-out hover:-translate-y-1 dark:text-black">
+      <Card className="dark:bg-transparent border-border shadow-sm hover:border hover:border-red-600 hover:duration-300 hover:ease-in-out hover:-translate-y-1 dark:text-black">
         <CardHeader className="flex flex-col lg:flex-row gap-6 lg:items-center">
           <div className="bg-destructive/20 p-3 w-fit rounded-full">
             <img className="size-10" src={image} alt="" />

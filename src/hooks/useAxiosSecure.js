@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect } from "react";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "./useAuth";
 
@@ -17,9 +18,16 @@ function useAxiosSecure() {
       (err) => {
         console.log("caught on interceptor", err);
         if (err.status === 401 || err.status === 403) {
-          handleSignOut();
-          axios.get("/clearjwt");
-          navigate("/auth/signin");
+          handleSignOut().then(() => {
+            axios.get("/clearjwt", { withCredentials: true }).then(() => {
+              if (err.status === 401) {
+                toast.error("Unauthorized access! signout successfull!");
+              } else if (err.status === 403) {
+                toast.error("Forbidden access! signout successfull!");
+              }
+            });
+            navigate("/auth/signin");
+          });
         }
       }
     );

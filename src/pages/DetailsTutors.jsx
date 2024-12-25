@@ -142,17 +142,17 @@ function DetailsTutors() {
               <div className="flex flex-col gap-3">
                 <div className="flex items-center gap-2">
                   <FaGraduationCap size={18} />
-                  <p>Instructor:</p>
+                  <p className="text-muted-foreground">Instructor:</p>
                   <h2 className="text-xl font-semibold">{name}</h2>
                 </div>
                 <div className="flex items-center gap-2">
                   <BiSolidBadgeDollar size={18} />
-                  <p>Price:</p>
+                  <p className="text-muted-foreground">Price:</p>
                   <h2 className="">$ {price}</h2>
                 </div>
                 <div className="flex items-center gap-2">
                   <GiDrippingStar size={18} />
-                  <p>Review:</p>
+                  <p className="text-muted-foreground">Review:</p>
                   <h2 className="">{review}</h2>
                 </div>
               </div>

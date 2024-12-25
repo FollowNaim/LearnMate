@@ -43,11 +43,26 @@ export default function SignIn() {
           return <b>{err.message}</b>;
         },
       })
-      .then(() => {
-        navigate(state || "/");
-        setLoading(false);
+      .then((res) => {
+        axios
+          .post(
+            "/jwt",
+            { name: res.user.displayName, email: res.user.email },
+            { withCredentials: true }
+          )
+          .then(() => {
+            navigate(state || "/");
+            setLoading(false);
+          })
+          .catch((err) => {
+            console.log(err);
+            setLoading(false);
+          });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+      });
   };
   const handleGoogle = () => {
     setLoading(true);

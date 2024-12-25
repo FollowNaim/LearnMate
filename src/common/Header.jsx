@@ -1,14 +1,12 @@
 import defaultUser from "@/assets/header/user.png";
 import Moon from "@/assets/theme/Moon";
 import Sun from "@/assets/theme/Sun";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { IconButton } from "@/components/ui/IconButton";
@@ -144,11 +142,10 @@ function Header() {
                       /> */}
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
-                      <DropdownMenuLabel>User Name</DropdownMenuLabel>
-                      <DropdownMenuSeparator />
                       <DropdownMenuItem>
                         {user?.displayName || "N/A"}
                       </DropdownMenuItem>
+                      <DropdownMenuItem>{user?.email}</DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </div>

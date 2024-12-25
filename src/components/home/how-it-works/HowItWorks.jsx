@@ -75,7 +75,7 @@ function HowItWorks() {
             }
           />
         </div>
-        <div className="flex justify-center items-center mt-6">
+        <div className="flex justify-center items-center mt-6 relative z-50">
           <Link to={"/add-tutorials"}>
             <Button size="lg">Join LearnMate now!</Button>
           </Link>
