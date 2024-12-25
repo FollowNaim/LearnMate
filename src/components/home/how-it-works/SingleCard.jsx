@@ -11,7 +11,7 @@ function SingleCard({ title, subtitle, img, count }) {
       {title}
       <p className="text-muted-foreground">{subtitle}</p>
       <img className="w-40 h-40 mt-4" src={img} alt="" />
-      <div className="absolute left-0 top-1/2 -translate-x-1/2">
+      <div className="absolute left-0 top-1/2 -translate-x-1/3 lg:-translate-x-1/2">
         <p className="w-10 h-10 flex justify-center items-center text-white font-bold text-xl rounded-full bg-red-600">
           {count}
         </p>
