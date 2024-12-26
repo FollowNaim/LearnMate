@@ -9,6 +9,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { useAuth } from "@/hooks/useAuth";
+import useAxiosSecure from "@/hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -20,10 +21,11 @@ import { PiStudent } from "react-icons/pi";
 import { useParams } from "react-router-dom";
 function DetailsTutors() {
   const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
   const { details: id } = useParams();
   const { data, isLoading } = useQuery({
     queryKey: ["tutor"],
-    queryFn: () => axios.get(`/tutors/${id}`),
+    queryFn: () => axiosSecure.get(`/tutors/${id}`),
   });
   const { _id, name, image, bookings, price, category, description, review } =
     data?.data || {};

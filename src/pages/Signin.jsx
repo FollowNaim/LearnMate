@@ -25,6 +25,7 @@ export default function SignIn() {
     setLoading,
     loading,
     isTokenLoading,
+    handleGithubLogin,
   } = useAuth();
   const { state } = useLocation();
   const navigate = useNavigate();
@@ -68,6 +69,37 @@ export default function SignIn() {
     setLoading(true);
     toast
       .promise(handleGoogleLogin(), {
+        loading: "Signin...",
+        success: <b>Signed in successfull !</b>,
+        error: (err) => {
+          return <b>{err.message}</b>;
+        },
+      })
+      .then((res) => {
+        axios
+          .post(
+            "/jwt",
+            { name: res.user.displayName, email: res.user.email },
+            { withCredentials: true }
+          )
+          .then(() => {
+            navigate(state || "/");
+            setLoading(false);
+          })
+          .catch((err) => {
+            console.log(err);
+            setLoading(false);
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+      });
+  };
+  const handleGithub = () => {
+    setLoading(true);
+    toast
+      .promise(handleGithubLogin(), {
         loading: "Signin...",
         success: <b>Signed in successfull !</b>,
         error: (err) => {
@@ -150,7 +182,11 @@ export default function SignIn() {
                 >
                   <FaGoogle /> Google
                 </Button>
-                <Button variant="outline" className="w-full">
+                <Button
+                  onClick={handleGithub}
+                  variant="outline"
+                  className="w-full"
+                >
                   <FaGithub /> Github
                 </Button>
               </div>

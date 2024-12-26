@@ -20,8 +20,8 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { useAuth } from "@/hooks/useAuth";
+import useAxiosSecure from "@/hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import Lottie from "lottie-react";
 import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
@@ -29,9 +29,10 @@ import { useNavigate, useParams } from "react-router-dom";
 export default function UpdateTutorial() {
   const { user } = useAuth();
   const { id } = useParams();
+  const axiosSecure = useAxiosSecure();
   const { data } = useQuery({
     queryKey: ["tutors"],
-    queryFn: () => axios.get(`/tutors/${id}`),
+    queryFn: () => axiosSecure.get(`/tutors/${id}`),
   });
   const navigate = useNavigate();
   const { _id, name, image, description, category, price, review } =
@@ -42,7 +43,7 @@ export default function UpdateTutorial() {
     data.name = user?.displayName;
     data.email = user?.email;
     toast
-      .promise(axios.put(`/tutors/${_id}`, data), {
+      .promise(axiosSecure.put(`/tutors/${_id}`, data), {
         loading: "Updating...",
         success: <b>Updated successfull !</b>,
         error: <b>Could not update.</b>,
