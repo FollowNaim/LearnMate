@@ -6,7 +6,14 @@ This repository contains the front-end implementation for **LearnMate**, an inno
 
 ## Purpose
 
+https://github.com/FollowNaim/LearnMate
 LearnMate is a one-stop solution for learners to connect with professional tutors, schedule tutorial sessions, and achieve their academic goals with ease. The platform also empowers tutors to manage bookings and reviews efficiently.
+
+---
+
+## Showcase
+
+<img src='https://i.ibb.co.com/s3Wfgyk/01.jpg'/>
 
 ---
 
@@ -27,22 +34,6 @@ LearnMate is a one-stop solution for learners to connect with professional tutor
 - **Database:** MongoDB
 - **Authentication:** Firebase Authentication (JWT token integration)
 - **Data Fetching:** TanStack Query, Axios
-
----
-
-## NPM Packages Used
-
-- **React** – Core library for building the user interface.
-- **React Router** – For client-side routing.
-- **Axios** – For making HTTP requests to the backend.
-- **TanStack Query** – For data synchronization and caching.
-- **Firebase** – For authentication and backend services.
-- **Framer Motion** – For smooth and interactive animations.
-- **Shadcn UI Components** – For pre-designed, customizable UI components.
-- **Tailwind CSS** – For efficient and responsive styling.
-- **React icons** – For awesome react icons.
-- **React Hot Toast** – For realtime notifications.
-- **React Helmet** – For better SEO.
 
 ---
 
@@ -111,8 +102,6 @@ LearnMate is a one-stop solution for learners to connect with professional tutor
 - **Dark/Light Mode:** Toggle theme for the entire application.
 - **Error and Loading Pages:** Ensures smooth user experience.
 - **Animations:** Integrated animations using Framer Motion.
-- **Pagination:** Implemented for the "Find Tutors" page, showing 6–9 tutors per page.
-- -
 
 ---
 
@@ -146,6 +135,102 @@ LearnMate is a one-stop solution for learners to connect with professional tutor
 
 ---
 
-## Deployment
+## Dependencies
 
-LearnMate is fully deployed and accessible to users, offering seamless integration of the client and backend services for real-time data updates. For more information or to report issues, refer to the repository.
+- **@radix-ui/react-avatar**: ^1.1.2 – A Radix UI component for displaying user avatars.
+- **@radix-ui/react-dropdown-menu**: ^2.1.4 – A Radix UI dropdown menu component.
+- **@radix-ui/react-label**: ^2.1.1 – A Radix UI label component for forms.
+- **@radix-ui/react-select**: ^2.1.4 – A Radix UI select dropdown component.
+- **@radix-ui/react-slot**: ^1.1.1 – A utility for passing dynamic components as slots.
+- **@tanstack/react-query**: ^5.62.8 – Powerful data-fetching library for React.
+- **axios**: ^1.7.9 – A promise-based HTTP client for making API requests.
+- **class-variance-authority**: ^0.7.1 – Utility for handling className variants in React.
+- **clsx**: ^2.1.1 – Utility for constructing `className` strings conditionally.
+- **firebase**: ^11.1.0 – Google Firebase JavaScript SDK.
+- **framer-motion**: ^11.15.0 – Motion library for React animations.
+- **hamburger-react**: ^2.5.2 – A hamburger menu button component.
+- **lottie-react**: ^2.4.0 – A React library for rendering Lottie animations.
+- **lucide-react**: ^0.469.0 – React icons library with beautiful, consistent icons.
+- **react**: ^18.3.1 – A JavaScript library for building user interfaces.
+- **react-dom**: ^18.3.1 – React package for working with the DOM.
+- **react-helmet-async**: ^2.0.5 – A library for managing document head tags asynchronously.
+- **react-hot-toast**: ^2.4.1 – Toast notification library for React.
+- **react-icons**: ^5.4.0 – Popular icon library for React.
+- **react-router-dom**: ^7.1.0 – Declarative routing for React applications.
+- **react-tooltip**: ^5.28.0 – Tooltips for React components.
+- **sweetalert2**: ^11.15.3 – A customizable, accessible replacement for JavaScript’s alert.
+- **tailwind-merge**: ^2.5.5 – Utility for merging Tailwind CSS class strings.
+- **tailwindcss-animate**: ^1.0.7 – Animation utilities for Tailwind CSS.
+
+---
+
+## Dev Dependencies
+
+- **@eslint/js**: ^9.17.0 – ESLint's core JavaScript functionality.
+- **@types/node**: ^22.10.2 – TypeScript definitions for Node.js.
+- **@types/react**: ^18.3.17 – TypeScript definitions for React.
+- **@types/react-dom**: ^18.3.5 – TypeScript definitions for React DOM.
+- **@vitejs/plugin-react**: ^4.3.4 – Vite plugin for React support.
+- **autoprefixer**: ^10.4.20 – PostCSS plugin for adding vendor prefixes automatically.
+- **eslint**: ^9.17.0 – A tool for identifying and fixing JavaScript code issues.
+- **eslint-plugin-react**: ^7.37.2 – ESLint plugin for React best practices.
+- **eslint-plugin-react-hooks**: ^5.0.0 – ESLint rules for React hooks.
+- **eslint-plugin-react-refresh**: ^0.4.16 – ESLint plugin for React Fast Refresh.
+- **globals**: ^15.13.0 – Global variable definitions for ESLint.
+- **postcss**: ^8.4.49 – A tool for transforming CSS with JavaScript plugins.
+- **tailwindcss**: ^3.4.17 – A utility-first CSS framework.
+- **vite**: ^6.0.3 – Next-generation frontend build tool.
+
+---
+
+## 🔧 How to Run
+
+1. **Clone the repository.**
+
+```bash
+   git clone https://github.com/FollowNaim/LearnMate
+   cd LearnMate
+```
+
+2. **Install Dependencies**
+
+```bash
+npm install
+```
+
+3. **Setup Environment Variables**
+
+- create .env.local in the root directory.
+- Add `VITE_API_URL` variable and put your server url here.
+- create a firebase project and add config here
+- firebase config will look like
+
+```bash
+VITE_Projectid
+VITE_apikey
+```
+
+like this.
+
+4. ** Run the application**
+
+```bash
+npm run dev
+```
+
+5. **Access the app**
+
+- Open http://localhost:5173 in your browser.
+
+---
+
+## 🛠️ Deployment
+
+- Hosted on Netlify or Vercel for a fast and reliable experience.
+- Firebase Authentication requires authorized domains to ensure secure access.
+
+---
+
+## 🤝 Contributions
+
+Contributions are welcome! Fork this repository, make your changes, and submit a pull request.
