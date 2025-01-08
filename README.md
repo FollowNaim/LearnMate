@@ -6,8 +6,7 @@ This repository contains the front-end implementation for **LearnMate**, an inno
 
 ## Purpose
 
-https://github.com/FollowNaim/LearnMate
-LearnMate is a one-stop solution for learners to connect with professional tutors, schedule tutorial sessions, and achieve their academic goals with ease. The platform also empowers tutors to manage bookings and reviews efficiently.
+[Learn Mate](https://learnmates.vercel.app/) is a one-stop solution for learners to connect with professional tutors, schedule tutorial sessions, and achieve their academic goals with ease. The platform also empowers tutors to manage bookings and reviews efficiently.
 
 ---
 
