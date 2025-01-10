@@ -10,7 +10,7 @@ function Footer() {
   return (
     <div className="border-t border-border">
       <div className="container px-4 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-0 pt-14 pb-8">
-        <div className="lg:col-span-3 lg:pr-20 flex flex-col">
+        <div className="lg:col-span-4 lg:pr-20 flex flex-col">
           <h4 className="text-2xl font-bold">
             Learn <span className="text-red-600">Mate</span>
           </h4>
@@ -49,74 +49,42 @@ function Footer() {
                   Find Tutors
                 </li>
               </Link>
+              <Link to={"/about"}>
+                <li className="hover:text-primary cursor-pointer hover:underline w-fit">
+                  About Us
+                </li>
+              </Link>
+            </ul>
+          </div>
+        </div>
+        <div className="lg:col-span-2">
+          <h4>Essential Links</h4>
+          <div className="mt-4 text-muted-foreground/70">
+            <ul className="flex flex-col gap-2">
+              <Link to={"/auth/signin"}>
+                <li className="hover:text-primary cursor-pointer hover:underline w-fit">
+                  Sign In
+                </li>
+              </Link>
+              <Link to={"/auth/signup"}>
+                <li className="hover:text-primary cursor-pointer hover:underline w-fit">
+                  Register
+                </li>
+              </Link>
+              <Link to={"/my-tutors"}>
+                <li className="hover:text-primary cursor-pointer hover:underline w-fit">
+                  My Tutors
+                </li>
+              </Link>
               <Link to={"/my-tutorials"}>
                 <li className="hover:text-primary cursor-pointer hover:underline w-fit">
                   My Tutorials
                 </li>
               </Link>
-              <Link to={"/my-tutors"}>
-                <li className="hover:text-primary cursor-pointer hover:underline w-fit">
-                  My Booked Tutors
-                </li>
-              </Link>
             </ul>
           </div>
         </div>
-        <div className="lg:col-span-2">
-          <h4>Student Support</h4>
-          <div className="mt-4 text-muted-foreground/70">
-            <ul className="flex flex-col gap-2">
-              <a target="_blank" href="https://github.com/follownaim">
-                <li className="hover:text-primary cursor-pointer hover:underline w-fit">
-                  Contact Us
-                </li>
-              </a>
-              <a target="_blank" href="https://github.com/follownaim">
-                <li className="hover:text-primary cursor-pointer hover:underline w-fit">
-                  Learning Resources
-                </li>
-              </a>
-              <a target="_blank" href="https://github.com/follownaim">
-                <li className="hover:text-primary cursor-pointer hover:underline w-fit">
-                  Payment Support
-                </li>
-              </a>
-              <a target="_blank" href="https://github.com/follownaim">
-                <li className="hover:text-primary cursor-pointer hover:underline w-fit">
-                  Feedback & Suggestions
-                </li>
-              </a>
-            </ul>
-          </div>
-        </div>
-        <div className="lg:col-span-2">
-          <h4>Legal</h4>
-          <div className="mt-4 text-muted-foreground/70">
-            <ul className="flex flex-col gap-2">
-              <Link to={"/auth/signin"}>
-                <li className="hover:text-primary cursor-pointer hover:underline w-fit">
-                  Privacy Policy
-                </li>
-              </Link>
-              <Link to={"/auth/signin"}>
-                <li className="hover:text-primary cursor-pointer hover:underline w-fit">
-                  Terms & Conditions
-                </li>
-              </Link>
-              <Link to={"/auth/signin"}>
-                <li className="hover:text-primary cursor-pointer hover:underline w-fit">
-                  Refund Policy
-                </li>
-              </Link>
-              <Link to={"/auth/signin"}>
-                <li className="hover:text-primary cursor-pointer hover:underline w-fit">
-                  Cookies Policy
-                </li>
-              </Link>
-            </ul>
-          </div>
-        </div>
-        <div className="lg:col-span-3">
+        <div className="lg:col-span-4">
           <h4>Our Instagram</h4>
           <div className="grid grid-cols-3 gap-3 mt-6">
             <img
