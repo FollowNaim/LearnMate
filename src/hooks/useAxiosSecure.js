@@ -16,7 +16,6 @@ function useAxiosSecure() {
     axiosSecure.interceptors.response.use(
       (res) => res,
       (err) => {
-        console.log("caught on interceptor", err);
         if (err.status === 401 || err.status === 403) {
           handleSignOut().then(() => {
             axios.get("/clearjwt", { withCredentials: true }).then(() => {

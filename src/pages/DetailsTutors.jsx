@@ -159,7 +159,11 @@ function DetailsTutors() {
                 </div>
               </div>
               <div className="mt-4">
-                <Button onClick={handleBooking} className="w-full">
+                <Button
+                  disabled={!user}
+                  onClick={handleBooking}
+                  className="w-full"
+                >
                   Book Now
                 </Button>
               </div>

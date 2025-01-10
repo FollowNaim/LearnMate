@@ -1,4 +1,5 @@
 import Tutor from "@/components/all-tutors/Tutor";
+import MotionTitle from "@/components/animation/MotionTitle";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
@@ -12,10 +13,12 @@ function TopTutorials() {
     <div>
       <div className="container mx-auto px-4 my-20">
         <div>
-          <h2 className="text-center text-3xl font-bold">
-            Master the Best – <span className="text-red-600">Top-Rated</span>{" "}
-            Tutorials
-          </h2>
+          <MotionTitle>
+            <h2 className="text-center text-3xl font-bold">
+              Master the Best – <span className="text-red-600">Top-Rated</span>{" "}
+              Tutorials
+            </h2>
+          </MotionTitle>
           <p className="text-center text-muted-foreground mt-4">
             Discover the highest-rated tutorials handpicked by learners for
             their exceptional quality and effectiveness.
