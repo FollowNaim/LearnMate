@@ -36,7 +36,7 @@ function Header() {
   }, [pathname]);
   return (
     <div>
-      <div className="container px-4 border-b border-border flex justify-between items-center py-2 fixed top-0 backdrop-blur-md z-[20000]">
+      <div className="container px-4  border-b border-border flex justify-between items-center py-2 fixed w-full left-1/2 -translate-x-1/2 top-0 backdrop-blur-md z-[20000]">
         <div>
           <Link to={"/"}>
             <h1 className="text-2xl font-bold">LearnMate </h1>

@@ -55,7 +55,7 @@ function AllTutors() {
   // }, [category]);
   // if (isLoading && !search) return <Spinner />;
   return (
-    <div className="my-10">
+    <div className="mb-10 mt-20">
       <Seo title={"Find Top-Rated Tutors | Learn Mate Tutors Directory"} />
       <div className="container px-4">
         <div className="grid max-w-xl mx-auto grid-cols-2 lg:grid-cols-3 justify-center items-center gap-6 mb-6">
@@ -130,7 +130,7 @@ function AllTutors() {
           {!data?.data.length ? (
             <NotFound />
           ) : (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 my-10">
+            <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 gap-4 my-10">
               {data?.data?.map((tutor) => (
                 <Tutor tutor={tutor} key={tutor._id} />
               ))}

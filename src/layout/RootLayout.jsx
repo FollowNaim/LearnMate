@@ -1,6 +1,6 @@
 import Footer from "@/common/Footer";
 import Header from "@/common/Header";
-import { ToastBar, Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 import { Outlet, ScrollRestoration } from "react-router-dom";
 
 function RootLayout() {
@@ -9,7 +9,7 @@ function RootLayout() {
       <ScrollRestoration />
       <Toaster />
       <Header />
-      <div className="mt-14">
+      <div className="mt-14 min-h-screen">
         <Outlet />
       </div>
       <Footer />
