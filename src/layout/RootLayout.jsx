@@ -9,7 +9,7 @@ function RootLayout() {
       <ScrollRestoration />
       <Toaster />
       <Header />
-      <div className="">
+      <div className="mt-14">
         <Outlet />
       </div>
       <Footer />

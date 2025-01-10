@@ -36,7 +36,7 @@ function Header() {
   }, [pathname]);
   return (
     <div>
-      <div className="container px-4 border-b border-border flex justify-between items-center py-2">
+      <div className="container px-4 border-b border-border flex justify-between items-center py-2 fixed top-0 backdrop-blur-md z-[20000]">
         <div>
           <Link to={"/"}>
             <h1 className="text-2xl font-bold">LearnMate </h1>
@@ -45,7 +45,7 @@ function Header() {
         <div className="">
           <ul
             id="navlinks"
-            className={`flex flex-col absolute w-full lg:w-fit bg-white/30 dark:bg-black/30 backdrop-blur-lg lg:bg-transparent top-0 left-0 z-10 ${
+            className={`flex flex-col absolute w-full lg:w-fit bg-white dark:bg-black md:bg-transparent md:dark:bg-transparent backdrop-blur-lg lg:bg-transparent top-0 left-0 z-10 ${
               isOpen
                 ? "translate-y-[65px] duration-300 ease-in-out py-8"
                 : "-translate-y-full lg:translate-y-0"
