@@ -7,6 +7,8 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { IconButton } from "@/components/ui/IconButton";
@@ -56,15 +58,6 @@ function Header() {
             </NavLink>
             <NavLink to={"/find-tutors"}>
               <li>Find tutors</li>
-            </NavLink>
-            <NavLink to={"/add-tutorials"}>
-              <li>Add Tutorials</li>
-            </NavLink>
-            <NavLink to={"/my-tutorials"}>
-              <li>My Tutorials</li>
-            </NavLink>
-            <NavLink to={"/my-tutors"}>
-              <li>My booked tutors</li>
             </NavLink>
             {!user && (
               <div className="flex flex-col md:hidden gap-2">
@@ -120,7 +113,7 @@ function Header() {
                         <AvatarImage
                           className="object-cover"
                           data-tooltip-id="name-tooltip"
-                          data-tooltip-content={user.displayName || "N/A"}
+                          data-tooltip-content={"Open Menu"}
                           referrerPolicy="no-referrer"
                           src={user?.photoURL || defaultUser}
                           alt={user?.displayName}
@@ -142,10 +135,18 @@ function Header() {
                       /> */}
                     </DropdownMenuTrigger>
                     <DropdownMenuContent className="mt-2">
-                      <DropdownMenuItem>
-                        {user?.displayName || "N/A"}
-                      </DropdownMenuItem>
-                      <DropdownMenuItem>{user?.email}</DropdownMenuItem>
+                      <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                      <DropdownMenuSeparator />
+
+                      <NavLink to={"/add-tutorials"}>
+                        <DropdownMenuItem>Add Tutorials</DropdownMenuItem>
+                      </NavLink>
+                      <NavLink to={"/my-tutorials"}>
+                        <DropdownMenuItem>My Tutorials</DropdownMenuItem>
+                      </NavLink>
+                      <NavLink to={"/my-tutors"}>
+                        <DropdownMenuItem>My booked tutors</DropdownMenuItem>
+                      </NavLink>
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </div>

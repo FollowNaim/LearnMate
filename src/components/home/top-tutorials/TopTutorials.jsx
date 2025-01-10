@@ -8,7 +8,6 @@ function TopTutorials() {
     queryFn: () => axios("/top-tutorials"),
   });
   if (isLoading) return;
-  console.log(tutorials);
   return (
     <div>
       <div className="container mx-auto px-4 my-20">
