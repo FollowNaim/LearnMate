@@ -20,7 +20,7 @@ function MyBooksList() {
   const queryClient = useQueryClient();
   const axiosSecure = useAxiosSecure();
   const { data, isLoading, isError } = useQuery({
-    queryKey: ["my-bookings"],
+    queryKey: ["my-bookings", { loading }],
     queryFn: async () => {
       const response = await axiosSecure.get(`/bookings?email=${user?.email}`);
       if (response.status === 401) {

@@ -118,7 +118,13 @@
     @apply bg-background text-foreground;
   }
 }
+html {
+  overflow-x: hidden;
+}
 
+body[data-scroll-locked] {
+  min-width: 100%;
+}
 #navlinks .active {
   text-decoration: underline;
   text-underline-offset: 3px;

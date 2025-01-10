@@ -21,7 +21,6 @@ import { useAuth } from "@/hooks/useAuth";
 import useAxiosSecure from "@/hooks/useAxiosSecure";
 
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import axios from "axios";
 import { MoreHorizontal } from "lucide-react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -31,7 +30,7 @@ function MyTutorials() {
   const queryClient = useQueryClient();
   const axiosSecure = useAxiosSecure();
   const { data, isLoading } = useQuery({
-    queryKey: ["my-bookings"],
+    queryKey: ["my-bookings", { user }],
     queryFn: () => axiosSecure.get(`/my-tutorials/${user?.email}`),
   });
   const mutation = useMutation({

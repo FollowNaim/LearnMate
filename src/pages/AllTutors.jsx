@@ -75,6 +75,7 @@ function AllTutors() {
               <div className="grid gap-2 w-full">
                 {/* <Label htmlFor="role">Language</Label> */}
                 <Select
+                  modal={false}
                   id="category"
                   name="category"
                   value={categories}

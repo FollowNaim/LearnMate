@@ -141,7 +141,7 @@ function Header() {
                         src={user?.photoURL || defaultUser}
                       /> */}
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent>
+                    <DropdownMenuContent className="mt-2">
                       <DropdownMenuItem>
                         {user?.displayName || "N/A"}
                       </DropdownMenuItem>

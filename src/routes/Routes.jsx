@@ -52,11 +52,7 @@ export const routes = createBrowserRouter([
       },
       {
         path: "/tutor/:details",
-        element: (
-          <PrivateRoutes>
-            <DetailsTutors />
-          </PrivateRoutes>
-        ),
+        element: <DetailsTutors />,
       },
       {
         path: "/tutor/update/:id",
