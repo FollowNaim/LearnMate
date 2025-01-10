@@ -62,6 +62,13 @@ function Header() {
             <NavLink to={"/about"}>
               <li>About us</li>
             </NavLink>
+            {user && (
+              <div className="flex flex-col text-center gap-4 md:hidden">
+                <NavLink to={"/add-tutorials"}>Add Tutorials</NavLink>
+                <NavLink to={"/my-tutorials"}>My Tutorials</NavLink>
+                <NavLink to={"/my-tutors"}>My booked tutors</NavLink>
+              </div>
+            )}
             {!user && (
               <div className="flex flex-col md:hidden gap-2">
                 <Link to={"/auth/signin"}>
@@ -107,28 +114,29 @@ function Header() {
 
           {user && (
             <>
-              <Tooltip id="name-tooltip" />
-              <div className="flex items-center gap-2 ">
-                <div className="flex items-center pr-2">
-                  <DropdownMenu>
-                    <DropdownMenuTrigger>
-                      <Avatar>
-                        <AvatarImage
-                          className="object-cover"
-                          data-tooltip-id="name-tooltip"
-                          data-tooltip-content={"Open Menu"}
-                          referrerPolicy="no-referrer"
-                          src={user?.photoURL || defaultUser}
-                          alt={user?.displayName}
-                        />
-                        {/* <AvatarFallback
+              <div className="hidden md:block">
+                <Tooltip id="name-tooltip" />
+                <div className="flex items-center gap-2 ">
+                  <div className="flex items-center pr-2">
+                    <DropdownMenu>
+                      <DropdownMenuTrigger>
+                        <Avatar>
+                          <AvatarImage
+                            className="object-cover"
+                            data-tooltip-id="name-tooltip"
+                            data-tooltip-content={"Open Menu"}
+                            referrerPolicy="no-referrer"
+                            src={user?.photoURL || defaultUser}
+                            alt={user?.displayName}
+                          />
+                          {/* <AvatarFallback
                           data-tooltip-id="name-tooltip"
                           data-tooltip-content={user.displayName || "N/A"}
                         >
                           N
                         </AvatarFallback> */}
-                      </Avatar>
-                      {/* <img
+                        </Avatar>
+                        {/* <img
                         className="object-cover size-10 rounded-full"
                         data-tooltip-id="name-tooltip"
                         data-tooltip-content={user.displayName || "N/A"}
@@ -136,28 +144,43 @@ function Header() {
                         alt={user?.displayName}
                         src={user?.photoURL || defaultUser}
                       /> */}
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent className="mt-2">
-                      <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                      <DropdownMenuSeparator />
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent className="mt-2">
+                        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                        <DropdownMenuSeparator />
 
-                      <NavLink to={"/add-tutorials"}>
-                        <DropdownMenuItem>Add Tutorials</DropdownMenuItem>
-                      </NavLink>
-                      <NavLink to={"/my-tutorials"}>
-                        <DropdownMenuItem>My Tutorials</DropdownMenuItem>
-                      </NavLink>
-                      <NavLink to={"/my-tutors"}>
-                        <DropdownMenuItem>My booked tutors</DropdownMenuItem>
-                      </NavLink>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
+                        <NavLink to={"/add-tutorials"}>
+                          <DropdownMenuItem>Add Tutorials</DropdownMenuItem>
+                        </NavLink>
+                        <NavLink to={"/my-tutorials"}>
+                          <DropdownMenuItem>My Tutorials</DropdownMenuItem>
+                        </NavLink>
+                        <NavLink to={"/my-tutors"}>
+                          <DropdownMenuItem>My booked tutors</DropdownMenuItem>
+                        </NavLink>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  </div>
+                  <Button onClick={handleLogout} className="hidden lg:block">
+                    Sign Out
+                  </Button>
                 </div>
-                <Button onClick={handleLogout} className="hidden lg:block">
-                  Sign Out
-                </Button>
               </div>
             </>
+          )}
+          {user && (
+            <div className="block md:hidden">
+              <Avatar>
+                <AvatarImage
+                  className="object-cover"
+                  data-tooltip-id="name-tooltip"
+                  data-tooltip-content={"Open Menu"}
+                  referrerPolicy="no-referrer"
+                  src={user?.photoURL || defaultUser}
+                  alt={user?.displayName}
+                />
+              </Avatar>
+            </div>
           )}
 
           <div className="block lg:hidden">
