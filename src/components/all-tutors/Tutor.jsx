@@ -71,7 +71,7 @@ function Tutor(props) {
             src={image}
             alt=""
           />
-          <div className="absolute top-4   left-4">
+          <div className="absolute top-4 left-4">
             <img
               className="w-8"
               src={`https://purecatamphetamine.github.io/country-flag-icons/3x2/${

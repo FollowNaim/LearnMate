@@ -5,6 +5,7 @@ import Hero from "@/components/home/hero/Hero";
 import HowItWorks from "@/components/home/how-it-works/HowItWorks";
 import { MarqueeDemo } from "@/components/home/scroller/Scroll";
 import Stats2 from "@/components/home/stats/Stats2";
+import TopTutorials from "@/components/home/top-tutorials/TopTutorials";
 import Seo from "@/components/seo/Seo";
 
 function Home() {
@@ -19,6 +20,7 @@ function Home() {
       {/* <Stats /> */}
       <Stats2 />
       <Category />
+      <TopTutorials />
       <HowItWorks />
       <MarqueeDemo />
       <CTA />
