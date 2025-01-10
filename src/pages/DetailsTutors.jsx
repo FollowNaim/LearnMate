@@ -24,7 +24,7 @@ function DetailsTutors() {
   const axiosSecure = useAxiosSecure();
   const { details: id } = useParams();
   const { data, isLoading } = useQuery({
-    queryKey: ["tutor"],
+    queryKey: ["tutor", { id }],
     queryFn: () => axiosSecure.get(`/tutors/${id}`),
   });
   const { _id, name, image, bookings, price, category, description, review } =

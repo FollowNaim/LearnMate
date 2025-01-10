@@ -66,7 +66,7 @@ function AllTutors() {
               onChange={(e) => setSearch(e.target.value)}
               name="search"
               type="text"
-              placeholder="Search Here..."
+              placeholder="Search Language..."
             />
             <IoIosSearch color="#737373" className="absolute top-3 right-2" />
           </div>
