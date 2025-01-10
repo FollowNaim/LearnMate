@@ -1,4 +1,5 @@
 import fillAnimation from "@/assets/animation/update.json";
+import Spinner from "@/components/loader/Spinner";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -30,8 +31,8 @@ export default function UpdateTutorial() {
   const { user } = useAuth();
   const { id } = useParams();
   const axiosSecure = useAxiosSecure();
-  const { data } = useQuery({
-    queryKey: ["tutors"],
+  const { data, isLoading, refetch } = useQuery({
+    queryKey: ["tutors", { id }],
     queryFn: () => axiosSecure.get(`/tutors/${id}`),
   });
   const navigate = useNavigate();
@@ -48,10 +49,14 @@ export default function UpdateTutorial() {
         success: <b>Updated successfull !</b>,
         error: <b>Could not update.</b>,
       })
-      .then(() => navigate("/my-tutorials"));
+      .then(() => {
+        navigate("/my-tutorials");
+        refetch();
+      });
   };
+  if (isLoading) return <Spinner />;
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 max-w-7xl mx-auto items-center justify-center mt-10 mb-14 px-4 lg:px-6">
+    <div className="grid grid-cols-1 lg:grid-cols-2 max-w-7xl mx-auto items-center justify-center mt-20 mb-10 px-4 lg:px-6">
       <form className="w-full max-w-md mx-auto" onSubmit={handleSubmit}>
         <Card className="w-full max-w-lg mx-auto">
           <CardHeader className="space-y-1 text-center">

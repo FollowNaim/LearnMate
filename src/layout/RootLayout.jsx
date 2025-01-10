@@ -7,9 +7,11 @@ function RootLayout() {
   return (
     <div className="font-lato">
       <ScrollRestoration />
-      <Toaster />
+      <div className="relative z-[99999999]">
+        <Toaster />
+      </div>
       <Header />
-      <div className="mt-14 min-h-screen">
+      <div className="mt-14 min-h-[70vh]">
         <Outlet />
       </div>
       <Footer />

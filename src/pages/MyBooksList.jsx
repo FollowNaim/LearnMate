@@ -47,10 +47,10 @@ function MyBooksList() {
     return <p>Something went wrong</p>;
   }
   return (
-    <div className="mb-10 mt-2">
+    <div className="mb-10 mt-16">
       <div className="container px-4">
         <Table>
-          <TableCaption>A list of your recent invoices.</TableCaption>
+          <TableCaption>A list of your booked tutors.</TableCaption>
           <TableHeader>
             <TableRow>
               <TableHead className="w-[100px]">ID</TableHead>
