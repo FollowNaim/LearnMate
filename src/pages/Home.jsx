@@ -1,5 +1,6 @@
 import Category from "@/components/home/category/Category";
 import CTA from "@/components/home/cta/CTA";
+import { FAQ } from "@/components/home/faq/FAQ";
 import Hero from "@/components/home/hero/Hero";
 import HowItWorks from "@/components/home/how-it-works/HowItWorks";
 import { MarqueeDemo } from "@/components/home/scroller/Scroll";
@@ -21,6 +22,7 @@ function Home() {
       <HowItWorks />
       <MarqueeDemo />
       <CTA />
+      <FAQ />
     </div>
   );
 }
