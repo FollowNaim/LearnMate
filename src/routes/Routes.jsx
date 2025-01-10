@@ -1,4 +1,5 @@
 import RootLayout from "@/layout/RootLayout";
+import AboutUs from "@/pages/AboutUs";
 import AddTutorials from "@/pages/AddTutorials";
 import AllTutors from "@/pages/AllTutors";
 import DetailsTutors from "@/pages/DetailsTutors";
@@ -25,6 +26,10 @@ export const routes = createBrowserRouter([
       {
         path: "/find-tutors",
         element: <AllTutors />,
+      },
+      {
+        path: "/about",
+        element: <AboutUs />,
       },
       {
         path: "/my-tutors",

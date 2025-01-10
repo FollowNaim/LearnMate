@@ -25,7 +25,7 @@ function DetailsTutors() {
   const { details: id } = useParams();
   const { data, isLoading } = useQuery({
     queryKey: ["tutor", { id }],
-    queryFn: () => axiosSecure.get(`/tutors/${id}`),
+    queryFn: () => axios.get(`/tutors/${id}`),
   });
   const { _id, name, image, bookings, price, category, description, review } =
     data?.data || {};
@@ -39,7 +39,7 @@ function DetailsTutors() {
       category,
       price,
     };
-    toast.promise(axios.post("/bookings", bookingDetails), {
+    toast.promise(axiosSecure.post("/bookings", bookingDetails), {
       loading: "Adding...",
       success: <b>Booking added!</b>,
       error: (err) => {
