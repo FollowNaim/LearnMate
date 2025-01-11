@@ -11,7 +11,7 @@ function RootLayout() {
         <Toaster />
       </div>
       <Header />
-      <div className="mt-14 min-h-[70vh]">
+      <div className="mt-16 md:mt-14 min-h-[70vh]">
         <Outlet />
       </div>
       <Footer />

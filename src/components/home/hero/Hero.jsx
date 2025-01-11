@@ -34,7 +34,7 @@ function Hero() {
               <span>Trusted by Millions Worldwide</span>
             </p>
           </div>
-          <Link to={"/add-tutorials"}>
+          <Link to={"/find-tutors"}>
             <Button size="lg" className="mt-8">
               Start Your Journey Today!
             </Button>

@@ -62,6 +62,7 @@ function Header() {
             <NavLink to={"/about"}>
               <li>About us</li>
             </NavLink>
+
             {user && (
               <div className="flex flex-col text-center gap-4 md:hidden">
                 <NavLink to={"/add-tutorials"}>Add Tutorials</NavLink>

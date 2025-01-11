@@ -15,11 +15,10 @@ export function FAQ() {
             <h2 className="text-3xl font-bold">
               Frequently asked <span className="text-red-600">question</span>
             </h2>
-            <p className="mt-4 text-muted-foreground">
-              Still do you have any questions to know?
-              <p> Feel free to ask our experts here.</p>
+            <p className="mt-4 text-muted-foreground max-w-md">
+              Explore detailed answers to the most common questions and learn
+              everything you need to know about using Learn Mate effectively.
             </p>
-            <Button className="mt-6">Ask Your Questions</Button>
           </div>
         </div>
         <div className="flex-1 mt-6 lg:mt-0">
